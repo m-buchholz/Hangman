@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:onClick="openSingleplayer"
             android:text="@string/singleplayer"
+            android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="320dp" />
 
@@ -35,8 +36,17 @@
             android:layout_height="wrap_content"
             android:onClick="openMultiplayer"
             android:text="@string/multiplayer"
+            android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="388dp" />
+
+        <Button
+            android:id="@+id/buttonScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="openScore"
+            android:text="@string/Scoreboard"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/buttonCredits"
@@ -44,14 +54,10 @@
             android:layout_height="wrap_content"
             android:onClick="openCredits"
             android:text="@string/credits"
+            android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="447dp" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Scoreboard" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

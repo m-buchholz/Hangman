@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".Singleplayer" />
         <activity android:name=".Multiplayer" />
-        <activity android:name=".Credits"></activity>
+        <activity android:name=".Credits" />
+        <activity android:name=".Score"></activity>
     </application>
 
 </manifest>

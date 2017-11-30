@@ -11,6 +11,7 @@ public class MainMenu extends AppCompatActivity {
 
     Button singleplayer;
     Button multiplayer;
+    Button score;
     Button credits;
 
     @Override
@@ -20,6 +21,7 @@ public class MainMenu extends AppCompatActivity {
 
         singleplayer = (Button) findViewById(R.id.buttonSingle);
         multiplayer = (Button) findViewById(R.id.buttonMulti);
+        score = (Button) findViewById(R.id.buttonScore);
         credits = (Button) findViewById(R.id.buttonCredits);
     }
 
@@ -57,6 +59,11 @@ public class MainMenu extends AppCompatActivity {
     public void openMultiplayer(View view){
         Intent multiplayer = new Intent(this, Multiplayer.class);
         startActivity(multiplayer);
+    }
+
+    public void openScore(View view){
+        Intent score = new Intent(this, Score.class);
+        startActivity(score);
     }
 
     public void openCredits(View view){
