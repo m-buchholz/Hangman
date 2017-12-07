@@ -67,6 +67,7 @@
             android:id="@+id/buttonStartMP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="startMPWord"
             android:text="@string/start"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="293dp" />

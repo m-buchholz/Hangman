@@ -1,4 +1,5 @@
-package de.tu_dresden.hangman;
+//LAYOUT IN XML FEHLT
+/*package de.tu_dresden.hangman;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -51,4 +52,4 @@ public class Multiplayer_Word_Player2 extends AppCompatActivity {
 
         startActivity(startMPGame);
     }
-}
+}*/

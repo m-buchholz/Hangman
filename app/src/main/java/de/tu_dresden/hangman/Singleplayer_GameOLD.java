@@ -1,4 +1,5 @@
-package de.tu_dresden.hangman;
+//LAYOUT IN XML FEHLT
+/*package de.tu_dresden.hangman;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,4 +16,4 @@ public class Singleplayer_Game extends AppCompatActivity {
         //get the single player name, save in playerName
         String playerName = intent.getStringExtra(Singleplayer.EXTRA_PLAYERNAME);
     }
-}
+}*/
