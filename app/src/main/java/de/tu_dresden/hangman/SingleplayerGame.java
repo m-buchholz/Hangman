@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SingleplayerGame extends AppCompatActivity {
+    public static final String EXTRA_WORD = "de.tu-dresden.hangman.EXTRA_WORD";
 
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
     String[] wordlist = {"KATZE", "HUND", "MAUS", "PAPAGEI", "TIGER", "KUCHEN", "HAMBURGER", "FREUND", "ZUSTAND", "FISCH", "GEIER", "FUCHS", "GANS", "ENTE", "FISCH", "QUALLE", "GLAS", "INSEL", "BAYERN", "SACHSEN", "PULLOVER"};
@@ -20,6 +21,7 @@ public class SingleplayerGame extends AppCompatActivity {
     int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
 
     String word = wordlist[randomNum];
+
     int wordLength;
     Button buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL, buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ;
     TextView letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8, letter9;
@@ -185,6 +187,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 }
                 else if (letterToCheck.equals(currentL.toString()) && counterright == (map.size()-1) ) {
                     letterArray[i].setText(currentL.toString());
+                    win.putExtra(EXTRA_WORD, word);
                     startActivity(win);
                 }
                 else if (letterToCheck.equals(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
@@ -201,9 +204,10 @@ public class SingleplayerGame extends AppCompatActivity {
                 counter++;
             }
             countertest=0;
-            platzhalterbilder.setText(""+counter);
+            platzhalterbilder.setText("" + counter);
             //wenn maxium an fehlversuchen erreicht -> lost activity
             if(counter == max-1){
+                lost.putExtra(EXTRA_WORD, word);
                 startActivity(lost);
             }
 
