@@ -20,7 +20,7 @@
         <activity android:name=".Multiplayer" />
         <activity android:name=".Credits" />
         <activity android:name=".Score" />
-        <activity android:name=".SingleplayerGame" />
+        <activity android:name=".SingleplayerGame"/>
         <activity android:name=".MultiplayerWord" />
         <activity android:name=".MultiplayerGame" />
         <activity android:name=".Win" />
