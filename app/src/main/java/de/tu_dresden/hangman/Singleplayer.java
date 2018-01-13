@@ -10,7 +10,7 @@ import android.widget.EditText;
 public class Singleplayer extends AppCompatActivity {
 
     Button start;
-    EditText playerName; 
+    EditText playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
