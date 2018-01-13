@@ -181,20 +181,20 @@ public class SingleplayerGame extends AppCompatActivity {
 
             for(int i = 0; i < wordLength; i++) {
                 currentL = word.charAt(i);
-                if (letterToCheck.equals(currentL.toString()) && counterright < (map.size()-1) && counter < max) {
+                if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright < (map.size()-1) && counter < max) {
                     letterArray[i].setText(currentL.toString());
                     counterright++;
                 }
-                else if (letterToCheck.equals(currentL.toString()) && counterright == (map.size()-1) ) {
+                else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
                     letterArray[i].setText(currentL.toString());
                     win.putExtra(EXTRA_WORD, word);
                     startActivity(win);
                 }
-                else if (letterToCheck.equals(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
+                else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
                     letterArray[i].setText(currentL.toString());
                     counterright++;
                 }
-                else if (!letterToCheck.equals(currentL.toString()) && counter < (max-1) ) {
+                else if (!letterToCheck.equalsIgnoreCase(currentL.toString()) && counter < (max-1) ) {
                     countertest++;
                 }
 
