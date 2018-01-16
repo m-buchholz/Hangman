@@ -22,6 +22,7 @@ public class SingleplayerGame extends AppCompatActivity {
     int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
 
     String word = wordlist[randomNum];
+    String playerName;
 
     int wordLength;
     Button buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL, buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ;
@@ -39,6 +40,8 @@ public class SingleplayerGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
+
+        playerName = getIntent().getExtras().getString("name");
         Button[] buttons = {buttonA, buttonB};
 
         //Buttons für Buchstaben
@@ -219,7 +222,9 @@ public class SingleplayerGame extends AppCompatActivity {
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
                     letterArray[i].setText(currentL.toString());
                     win.putExtra(EXTRA_WORD, word);
+                    win.putExtra("playerName", playerName); //Spielername übergeben
                     startActivity(win);
+                    finish();//Activity schließen, wenn gewonnen
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
                     letterArray[i].setText(currentL.toString());
@@ -243,8 +248,10 @@ public class SingleplayerGame extends AppCompatActivity {
             //wenn maxium an fehlversuchen erreicht -> lost activity
             if(counter == max-1){
                 lost.putExtra(EXTRA_WORD, word);
+                lost.putExtra("playerName", playerName);
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
+                finish(); //Activity schließen (wenn verloren)
             }
             else if (counter > 0 && counter < (max-1)){
                 imageArray[counter-1].setVisibility(View.VISIBLE);

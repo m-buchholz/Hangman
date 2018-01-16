@@ -11,6 +11,7 @@ public class Singleplayer extends AppCompatActivity {
 
     Button start;
     EditText playerName;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,10 @@ public class Singleplayer extends AppCompatActivity {
     }
 
     public void startSPGame(View view){
+        name = playerName.getText().toString();
         Intent startSPGame = new Intent(this, SingleplayerGame.class);
+        startSPGame.putExtra("name", name);
         startActivity(startSPGame);
+        finish(); //Activity schließen (wenn Spiel gestartet wird)
     }
 }
