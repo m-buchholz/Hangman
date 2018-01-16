@@ -256,8 +256,6 @@ public class SingleplayerGame extends AppCompatActivity {
             else if (counter > 0 && counter < (max-1)){
                 imageArray[counter-1].setVisibility(View.VISIBLE);
             }
-
-
     }
 
 }

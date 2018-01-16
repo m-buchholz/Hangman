@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Singleplayer extends AppCompatActivity {
 
     Button start;
-    EditText playerName;
-    String name;
+    EditText name;
+    String playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,30 +22,19 @@ public class Singleplayer extends AppCompatActivity {
         setContentView(R.layout.activity_singleplayer);
 
         start = (Button)findViewById(R.id.buttonStartSP);
-        playerName = (EditText)findViewById(R.id.editPlayerNameSP);
+        name = (EditText)findViewById(R.id.editPlayerNameSP);
     }
 
     public void startSPGame(View view){
-        name = playerName.getText().toString();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Bitte einen Namen eingeben!");
-        builder.setPositiveButton(
-                "Ok",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-
-        if(name.equalsIgnoreCase("")){
-            alert.show();
-        }
-        else {
+        playerName = name.getText().toString();
+        if(name.getText().toString().isEmpty() == false){
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
-            startSPGame.putExtra("name", name);
+            startSPGame.putExtra("playerName", playerName);
             startActivity(startSPGame);
-            finish(); //Activity schließen (wenn Spiel gestartet wird)
+            finish();
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Gib einen Gamertag ein!",Toast.LENGTH_LONG); //Fehlermeldung wenn kein Name eingegeben
         }
     }
 }
