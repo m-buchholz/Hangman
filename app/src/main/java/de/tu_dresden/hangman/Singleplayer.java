@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Singleplayer extends AppCompatActivity {
 
     Button start;
-    EditText playerName;
-    String name;
+    EditText gamertag;
+    String playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +20,19 @@ public class Singleplayer extends AppCompatActivity {
         setContentView(R.layout.activity_singleplayer);
 
         start = (Button)findViewById(R.id.buttonStartSP);
-        playerName = (EditText)findViewById(R.id.editPlayerNameSP);
+        gamertag = (EditText)findViewById(R.id.editPlayerNameSP);
     }
 
     public void startSPGame(View view){
-        name = playerName.getText().toString();
-        Intent startSPGame = new Intent(this, SingleplayerGame.class);
-        startSPGame.putExtra("name", name);
-        startActivity(startSPGame);
-        finish(); //Activity schließen (wenn Spiel gestartet wird)
+        if (gamertag.getText().toString().isEmpty() == false) { //Wenn ein Name eingegeben wird, gehts weiter
+            playerName = gamertag.getText().toString();
+            Intent startSPGame = new Intent(this, SingleplayerGame.class);
+            startSPGame.putExtra("playerName", playerName);
+            startActivity(startSPGame);
+            finish(); //Activity schließen (wenn Spiel gestartet wird)
+        }
+        else { //sonst Fehlermeldung
+            Toast.makeText(getApplicationContext(), "Gib einen Gamertag ein!", Toast.LENGTH_LONG).show();
+        }
     }
 }
