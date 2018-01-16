@@ -10,16 +10,17 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-public class MultiplayerGame extends AppCompatActivity {
+public class MultiplayerGame2 extends AppCompatActivity {
 
     String playerName, enemyName, word, playerWord, enemyWord;
+    int triesEnemy;
 
     int wordLength;
     Button buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL, buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ;
     TextView letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8, letter9;
     TextView space1, space2, space3, space4, space5, space6, space7, space8;
     TextView[] letterArray = new TextView[9];
-    TextView enemysTurn;
+    TextView playersTurn;
 
     //Bilder array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
@@ -27,23 +28,24 @@ public class MultiplayerGame extends AppCompatActivity {
 
     int max = (imageArray.length + 1), counter = 0, countertest = 0, counterright = 0, counterr = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multiplayer_game);
-
+        setContentView(R.layout.activity_multiplayer_game2);
 
         playerName = getIntent().getExtras().getString("playerName");
         enemyName = getIntent().getExtras().getString("enemyName");
         playerWord = getIntent().getExtras().getString("playerWord");
         enemyWord = getIntent().getExtras().getString("enemyWord");
+        triesEnemy = getIntent().getExtras().getInt("triesEnemy");
 
         //Wer ist dran?
-        enemysTurn = (TextView) findViewById(R.id.enemysTurn);
-        enemysTurn.setText(enemyName + " ist an der Reihe!");
+        playersTurn = (TextView) findViewById(R.id.playersTurn);
+        playersTurn.setText(playerName + " ist an der Reihe!");
 
-        //Enemy ist dran
-        word = enemyWord;
+        //Player ist jetzt dran
+        word = playerWord;
 
         //Buttons für Buchstaben
         buttonA = (Button) findViewById(R.id.buttonA);
@@ -193,6 +195,7 @@ public class MultiplayerGame extends AppCompatActivity {
 
     }
 
+
     public void clickButton(View view) {
 
         view.setVisibility(View.INVISIBLE);
@@ -216,8 +219,8 @@ public class MultiplayerGame extends AppCompatActivity {
         }
 
 
-        //Intent für nächste Runde
-        Intent nextPlayer = new Intent(this, MultiplayerGame2.class);
+        //Intent für ende
+        Intent endGame = new Intent(this, EndMultiplayer.class);
 
         for (int i = 0; i < wordLength; i++) {
             currentL = word.charAt(i);
@@ -227,12 +230,13 @@ public class MultiplayerGame extends AppCompatActivity {
             } else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size() - 1)) {
                 letterArray[i].setText(currentL.toString());
 
-                nextPlayer.putExtra("enemyWord", enemyWord);
-                nextPlayer.putExtra("playerWord", playerWord);
-                nextPlayer.putExtra("enemyName", enemyName);
-                nextPlayer.putExtra("playerName", playerName);
-                nextPlayer.putExtra("triesEnemy", counter);
-                startActivity(nextPlayer);
+                endGame.putExtra("enemyWord", enemyWord);
+                endGame.putExtra("playerWord", playerWord);
+                endGame.putExtra("enemyName", enemyName);
+                endGame.putExtra("playerName", playerName);
+                endGame.putExtra("triesEnemy", triesEnemy);
+                endGame.putExtra("triesPlayer", counter);
+                startActivity(endGame);
                 finish();
 
             } else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max - 1) && counterright < (map.size() - 1)) {
@@ -256,12 +260,13 @@ public class MultiplayerGame extends AppCompatActivity {
         //wenn maxium an fehlversuchen erreicht -> lost activity
         if (counter == max - 1) {
 
-            nextPlayer.putExtra("enemyWord", enemyWord);
-            nextPlayer.putExtra("playerWord", playerWord);
-            nextPlayer.putExtra("enemyName", enemyName);
-            nextPlayer.putExtra("playerName", playerName);
-            nextPlayer.putExtra("triesEnemy", counter);
-            startActivity(nextPlayer);
+            endGame.putExtra("enemyWord", enemyWord);
+            endGame.putExtra("playerWord", playerWord);
+            endGame.putExtra("enemyName", enemyName);
+            endGame.putExtra("playerName", playerName);
+            endGame.putExtra("triesEnemy", triesEnemy);
+            endGame.putExtra("triesPlayer", counter);
+            startActivity(endGame);
             finish();
 
             imageArray[counter - 1].setVisibility(View.VISIBLE);
@@ -271,5 +276,4 @@ public class MultiplayerGame extends AppCompatActivity {
         }
 
     }
-
 }

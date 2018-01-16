@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.tu_dresden.hangman.MultiplayerGame">
+    tools:context="de.tu_dresden.hangman.MultiplayerGame2">
+
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -658,7 +659,7 @@
         app:srcCompat="@drawable/hangman0" />
 
     <TextView
-        android:id="@+id/enemysTurn"
+        android:id="@+id/playersTurn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -672,3 +673,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
+

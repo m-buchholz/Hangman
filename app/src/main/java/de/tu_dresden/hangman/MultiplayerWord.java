@@ -33,18 +33,22 @@ public class MultiplayerWord extends AppCompatActivity {
     public void startMPGame(View view){
         enemyWord = editMultiWord.getText().toString();
 
-        if(enemyWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")){
-            Toast.makeText(getApplicationContext(),"Gib ein Wort ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+        if(enemyWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")) {
+            Toast.makeText(getApplicationContext(), "Gib ein Wort ein!", Toast.LENGTH_LONG).show();
         }
         else if(enemyWord.length() < 5){
-            Toast.makeText(getApplicationContext(),"Gib ein Wort mit mehr als 4 Buchstaben ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+            Toast.makeText(getApplicationContext(),"Gib ein Wort mit mehr als 4 Buchstaben ein!",Toast.LENGTH_LONG).show();
+        }
+        else if(enemyWord.length() > 9){
+            Toast.makeText(getApplicationContext(),"Gib ein Wort mit weniger als 9 Buchstaben ein!",Toast.LENGTH_LONG).show();
         }
         else {
-            Intent startMPGame = new Intent(this, MultiplayerGame.class);
-            startMPGame.putExtra("enemyWord", enemyWord);
-            startMPGame.putExtra("playerName", playerName);
-            startMPGame.putExtra("enemyName", enemyName);
-            startActivity(startMPGame);
+            Intent startMPWord2 = new Intent(this, MultiplayerWord2.class);
+            startMPWord2.putExtra("enemyWord", enemyWord);
+            startMPWord2.putExtra("playerName", playerName);
+            startMPWord2.putExtra("enemyName", enemyName);
+            startActivity(startMPWord2);
+            finish();
         }
     }
 }

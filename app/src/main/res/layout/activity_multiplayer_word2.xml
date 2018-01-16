@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.tu_dresden.hangman.MultiplayerWord">
+    tools:context="de.tu_dresden.hangman.MultiplayerWord2">
 
     <TextView
         android:id="@+id/viewTitleMultiWord"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="startMPGame"
-            android:text="Weiter" />
+            android:text="Start" />
     </LinearLayout>
 
     <TextView
