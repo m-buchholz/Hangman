@@ -41,7 +41,7 @@ public class SingleplayerGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
 
-        playerName = getIntent().getExtras().getString("name");
+        playerName = getIntent().getExtras().getString("playerName");
         Button[] buttons = {buttonA, buttonB};
 
         //Buttons für Buchstaben

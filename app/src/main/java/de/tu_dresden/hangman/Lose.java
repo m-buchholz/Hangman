@@ -14,7 +14,7 @@ public class Lose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lose);
 
-        playerName = getIntent().getExtras().getString("name");
+        playerName = getIntent().getExtras().getString("playerName");
         notice = (TextView) findViewById(R.id.lose_notice);
         notice.setText("Du hast leider verloren, "+playerName+"!");
     }
