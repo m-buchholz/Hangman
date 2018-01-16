@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Multiplayer extends AppCompatActivity {
 
     Button start;
-    EditText playerName;
-    EditText enemyName;
+    EditText playerName,enemyName;
+    String StringplayerName, StringenemyName ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,20 @@ public class Multiplayer extends AppCompatActivity {
     }
 
     public void startMPWord(View view){
-        Intent multiplayer_word = new Intent(this, MultiplayerWord.class);
-        startActivity(multiplayer_word);
+        StringplayerName = playerName.getText().toString();
+        StringenemyName = enemyName.getText().toString();
+        if(StringplayerName.equalsIgnoreCase("") || StringenemyName.equalsIgnoreCase("")){
+            Toast.makeText(getApplicationContext(),"Gib Gamertags ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+        }
+        else{
+            Intent multiplayer_word = new Intent(this, MultiplayerWord.class);
+            multiplayer_word.putExtra("playerName", StringplayerName);
+            multiplayer_word.putExtra("enemyName", StringenemyName);
+            startActivity(multiplayer_word);
+            finish();
+        }
+
+
+
     }
 }
