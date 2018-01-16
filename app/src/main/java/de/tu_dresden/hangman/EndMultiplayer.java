@@ -2,8 +2,11 @@ package de.tu_dresden.hangman;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class EndMultiplayer extends AppCompatActivity {
+
+    TextView whoWins;
 
     String playerName, enemyName, playerWord, enemyWord;
     int triesEnemy, triesPlayer;
@@ -13,6 +16,8 @@ public class EndMultiplayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_multiplayer);
 
+        whoWins = (TextView) findViewById(R.id.textViewWinner);
+
         //Alle Infos von zuvor holen
         playerName = getIntent().getExtras().getString("playerName");
         enemyName = getIntent().getExtras().getString("enemyName");
@@ -20,5 +25,15 @@ public class EndMultiplayer extends AppCompatActivity {
         enemyWord = getIntent().getExtras().getString("enemyWord");
         triesEnemy = getIntent().getExtras().getInt("triesEnemy");
         triesPlayer = getIntent().getExtras().getInt("triesPlayer");
+
+        if(triesEnemy < triesPlayer){
+            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen!" );
+        }
+        else if (triesPlayer < triesEnemy){
+            whoWins.setText(playerName + " hat gegen " + enemyName + " gewonnen!");
+        }
+        else if (triesPlayer == triesEnemy){
+            whoWins.setText("Unentschieden!");
+        }
     }
 }
