@@ -31,9 +31,10 @@ public class MultiplayerGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_game);
 
+
         playerName = getIntent().getExtras().getString("playerName");
         enemyName = getIntent().getExtras().getString("enemyName");
-        word = getIntent().getExtras().getString("word");
+        word = getIntent().getExtras().getString("enemyWord");
 
 
         //Buttons für Buchstaben
@@ -180,6 +181,7 @@ public class MultiplayerGame extends AppCompatActivity {
         imageArray[6] = hangman6;
         imageArray[7] = hangman7;
         imageArray[8] = hangman8;
+
 
     }
 
