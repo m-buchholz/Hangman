@@ -1,3 +1,5 @@
+//Info: Variable counter sind die Fehlversuche für ein Wort
+
 package de.tu_dresden.hangman;
 
 import android.content.Intent;
