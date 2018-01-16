@@ -34,7 +34,7 @@ public class Singleplayer extends AppCompatActivity {
             finish();
         }
         else{
-            Toast.makeText(getApplicationContext(),"Gib einen Gamertag ein!",Toast.LENGTH_LONG); //Fehlermeldung wenn kein Name eingegeben
+            Toast.makeText(getApplicationContext(),"Gib deinen Gamertag ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
         }
     }
 }
