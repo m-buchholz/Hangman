@@ -45,7 +45,7 @@ public class MultiplayerWord2 extends AppCompatActivity {
         }
         else if (enemyWord.length() > 9) {
            Toast.makeText(getApplicationContext(), "Gib ein Wort mit weniger als 9 Buchstaben ein!", Toast.LENGTH_LONG).show();
-        }
+        } 
         else {
             Intent startGame = new Intent(this, MultiplayerGame.class);
             startGame.putExtra("enemyWord", enemyWord);

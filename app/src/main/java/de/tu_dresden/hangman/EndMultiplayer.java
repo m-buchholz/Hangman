@@ -1,7 +1,10 @@
 package de.tu_dresden.hangman;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class EndMultiplayer extends AppCompatActivity {
@@ -35,5 +38,17 @@ public class EndMultiplayer extends AppCompatActivity {
         else if (triesPlayer == triesEnemy){
             whoWins.setText("Unentschieden!");
         }
+    }
+
+    public void endGame(View view){
+        Intent mainMenu = new Intent(this, MainMenu.class);
+        startActivity(mainMenu);
+        finish();
+    }
+
+    public void playAgain(View view){
+        Intent MPGame = new Intent(this, Multiplayer.class);
+        startActivity(MPGame);
+        finish();
     }
 }

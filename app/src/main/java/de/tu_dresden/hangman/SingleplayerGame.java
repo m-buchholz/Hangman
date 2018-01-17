@@ -18,12 +18,12 @@ public class SingleplayerGame extends AppCompatActivity {
     public static final String EXTRA_WORD = "de.tu-dresden.hangman.EXTRA_WORD";
 
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
-    String[] wordlist = {"KATZE", "HUND", "MAUS", "PAPAGEI", "TIGER", "KUCHEN", "HAMBURGER", "FREUND", "ZUSTAND", "FISCH", "GEIER", "FUCHS", "GANS", "ENTE", "FISCH", "QUALLE", "GLAS", "INSEL", "BAYERN", "SACHSEN", "PULLOVER"};
+    String[] wordlist = {"Katzenklo", "KATZE", "HUND", "MAUS", "PAPAGEI", "TIGER", "KUCHEN", "HAMBURGER", "FREUND", "ZUSTAND", "FISCH", "GEIER", "FUCHS", "GANS", "ENTE", "FISCH", "QUALLE", "GLAS", "INSEL", "BAYERN", "SACHSEN", "PULLOVER"};
 
     //Random number
     int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
 
-    String word = wordlist[randomNum];
+    String word = wordlist[randomNum].toUpperCase();
     String playerName;
 
     int wordLength;
@@ -36,7 +36,7 @@ public class SingleplayerGame extends AppCompatActivity {
     ImageView[] imageArray = new ImageView[9];
     ImageView hangman0, hangman1, hangman2, hangman3, hangman4, hangman5, hangman6, hangman7, hangman8;
 
-    int max = (imageArray.length +1), counter = 0, countertest = 0, counterright =0, counterr=0;
+    int max = (imageArray.length+1), counter = 0, countertest = 0, counterright =0, counterr=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
