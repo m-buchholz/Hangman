@@ -55,29 +55,29 @@
 
     <Button
         android:id="@+id/RepeatButton"
-        android:layout_width="339dp"
-        android:layout_height="wrap_content"
+        android:layout_width="376dp"
+        android:layout_height="47dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:onClick="openSingleplayer"
         android:text="Nochmal spielen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loseImage" />
+        tools:layout_editor_absoluteY="402dp" />
 
     <Button
         android:id="@+id/endButton"
-        android:layout_width="336dp"
+        android:layout_width="374dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="finish"
         android:text="Beenden"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RepeatButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

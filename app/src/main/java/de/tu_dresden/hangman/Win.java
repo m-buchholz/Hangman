@@ -1,7 +1,9 @@
 package de.tu_dresden.hangman;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Win extends AppCompatActivity {
@@ -17,5 +19,15 @@ public class Win extends AppCompatActivity {
         playerName = getIntent().getExtras().getString("playerName"); //Spielernamen importieren
         notice = (TextView) findViewById(R.id.win_notice);
         notice.setText("Herzlichen Glückwunsch "+playerName+", du hast gewonnen!");
+    }
+
+    public void openSingleplayer(View view){
+        Intent singleplayer = new Intent(this, Singleplayer.class);
+        startActivity(singleplayer);
+        finish();
+    }
+
+    public void finish(View view){
+        finish();
     }
 }

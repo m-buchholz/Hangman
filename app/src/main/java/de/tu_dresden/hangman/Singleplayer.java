@@ -26,8 +26,8 @@ public class Singleplayer extends AppCompatActivity {
     }
 
     public void startSPGame(View view){
-        playerName = name.getText().toString();
         if(name.getText().toString().isEmpty() == false){
+            playerName = name.getText().toString();
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra("playerName", playerName);
             startActivity(startSPGame);

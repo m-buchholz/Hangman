@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context="de.tu_dresden.hangman.Win">
 
+    <Button
+        android:id="@+id/repeatButton"
+        android:layout_width="376dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="280dp"
+        android:onClick="openSingleplayer"
+        android:text="Nochmal spielen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/win_notice" />
+
+    <Button
+        android:id="@+id/endButton2"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="finish"
+        android:text="Beenden"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeatButton"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/viewWin"
         android:layout_width="wrap_content"
