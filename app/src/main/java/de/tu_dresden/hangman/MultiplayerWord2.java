@@ -35,7 +35,7 @@ public class MultiplayerWord2 extends AppCompatActivity {
     }
 
     public void startMPGame(View view) {
-        playerWord = editMultiWord.getText().toString();
+        playerWord = editMultiWord.getText().toString().toUpperCase();
 
         if (enemyWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")) {
             Toast.makeText(getApplicationContext(), "Gib ein Wort ein!", Toast.LENGTH_LONG).show();
