@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lose_notice"
         app:layout_constraintVertical_bias="0.309"
-        app:srcCompat="@drawable/fail" />
+        app:srcCompat="@drawable/fail" android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/lose_notice"
@@ -59,11 +59,12 @@
         android:layout_height="47dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
         android:onClick="openSingleplayer"
         android:text="Nochmal spielen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="402dp" />
+        app:layout_constraintTop_toBottomOf="@+id/loseImage" />
 
     <Button
         android:id="@+id/endButton"
@@ -80,4 +81,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RepeatButton"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/Share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/RepeatButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loseImage"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
