@@ -11,18 +11,22 @@ public class Lose extends AppCompatActivity {
 
     String playerName, word;
     TextView notice;
+    Button shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lose);
+
         word = getIntent().getExtras().getString("word");
         playerName = getIntent().getExtras().getString("playerName");
+
         notice = (TextView) findViewById(R.id.lose_notice);
+        shareButton = (Button) findViewById(R.id.share);
+
         notice.setText("Du hast leider verloren, "+playerName+".");
 
-        Button button = (Button) findViewById(R.id.share);          //Share Button
-        button.setOnClickListener(new View.OnClickListener() {
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent share = new Intent(Intent.ACTION_SEND);
@@ -31,8 +35,7 @@ public class Lose extends AppCompatActivity {
                 String counter = "Verloren nach: ";
                 String platzhalter = "                                              ";
                 String result = " wurde erhängt!";
-                String player = playerName;
-                share.putExtra(Intent.EXTRA_TEXT,"" + player + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });

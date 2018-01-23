@@ -11,6 +11,7 @@ public class Win extends AppCompatActivity {
 
     String playerName, word;
     TextView notice;
+    Button shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,13 @@ public class Win extends AppCompatActivity {
 
         word = getIntent().getExtras().getString("word");
         playerName = getIntent().getExtras().getString("playerName"); //Spielernamen importieren
+
         notice = (TextView) findViewById(R.id.win_notice);
+        shareButton = (Button) findViewById(R.id.share);
+
         notice.setText("Herzlichen Glückwunsch "+playerName+", du hast gewonnen!");
 
-        Button button = (Button) findViewById(R.id.share);
-        button.setOnClickListener(new View.OnClickListener() {
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent share = new Intent(Intent.ACTION_SEND);
@@ -32,8 +35,7 @@ public class Win extends AppCompatActivity {
                 String counter = "Geschafft nach: ";
                 String platzhalter = "                                              ";
                 String result = " hat überlebt!";
-                String player = playerName;
-                share.putExtra(Intent.EXTRA_TEXT,"" + player + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
