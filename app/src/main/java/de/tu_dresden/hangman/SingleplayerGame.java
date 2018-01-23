@@ -1,4 +1,9 @@
-//Info: Variable counter sind die Fehlversuche für ein Wort
+/*Info:
+    counter: zählt Fehlversuche
+    countertest: Hilfsvariable, um Fehlversuche zu zählen
+    counterright: zählt richtige Versuche. Wenn Maximum erreicht, dann hat man gewonnen. Maximum = Anzahl der unterschiedlichen Buchstaben in einem Wort
+    counterr: Hilfsvariable, um richtige Versuche zu zählen
+*/
 
 package de.tu_dresden.hangman;
 
