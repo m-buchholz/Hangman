@@ -17,4 +17,12 @@
     <string name="wie_lautet_das_erste_wort">Wie lautet das erste Wort?</string>
     <string name="verloren">Verloren</string>
     <string name="gewonnen">Gewonnen</string>
+    <string name="beenden">Beenden</string>
+    <string name="nochmal_spielen">Nochmal spielen</string>
+    <string name="teilen">Teilen</string>
+    <string name="schade">Schade!</string>
+    <string name="herzlichen_glueckwunsch">Herzlichen Glückwunsch!</string>
+    <string name="wort_eingeben">Wort eingeben</string>
+    <string name="weiter">Weiter</string>
+    <string name="fail">FAIL</string>
 </resources>

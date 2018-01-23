@@ -26,10 +26,9 @@
             android:layout_above="@+id/RepeatButton"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="Teilen"
+            android:text="@string/teilen"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loseImage" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
             android:id="@+id/endButton"
@@ -39,7 +38,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:onClick="finish"
-            android:text="Beenden"
+            android:text="@string/beenden"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,10 +53,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:onClick="openSingleplayer"
-            android:text="Nochmal spielen"
+            android:text="@string/nochmal_spielen"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loseImage" />
+            app:layout_constraintStart_toStartOf="parent"/>
     </RelativeLayout>
 
     <TextView
@@ -82,7 +80,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Herzlichen Glückwunsch!"
+        android:text="@string/herzlichen_glueckwunsch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

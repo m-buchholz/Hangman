@@ -28,7 +28,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="endGame"
-        android:text="Beenden"
+        android:text="@string/beenden"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -41,7 +41,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="playAgain"
-        android:text="Nochmal spielen"
+        android:text="@string/nochmal_spielen"
         app:layout_constraintBottom_toTopOf="@+id/endB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
