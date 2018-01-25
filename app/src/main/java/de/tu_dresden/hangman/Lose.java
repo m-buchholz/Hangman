@@ -34,9 +34,7 @@ public class Lose extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                String counter = "Verloren nach: " + tries;
-                String result = " wurde erhängt!";
-                share.putExtra(Intent.EXTRA_TEXT,playerName + result + "\n" + counter /*+ Versuchen*/+ " Versuchen." + "\n" + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + " wurde erhängt! \n" + "Verloren nach: " + tries + " Versuchen. \n" + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });

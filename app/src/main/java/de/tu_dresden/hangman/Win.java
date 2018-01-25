@@ -33,9 +33,7 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                String counter = "Geschafft nach: " +tries;
-                String result = " hat überlebt!";
-                share.putExtra(Intent.EXTRA_TEXT,playerName + result + "\n" + counter /*+ Versuchen*/+ " Versuchen." + "\n" + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + " hat  überlebt! \n" + "Geschafft nach: " + tries + " Versuchen. \n" + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
