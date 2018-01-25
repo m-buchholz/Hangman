@@ -21,8 +21,8 @@ public class Singleplayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer);
 
-        start = (Button)findViewById(R.id.buttonStartSP);
-        name = (EditText)findViewById(R.id.editPlayerNameSP);
+        start = findViewById(R.id.buttonStartSP);
+        name = findViewById(R.id.editPlayerNameSP);
     }
 
     public void startSPGame(View view){

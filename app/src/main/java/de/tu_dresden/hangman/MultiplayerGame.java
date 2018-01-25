@@ -46,43 +46,43 @@ public class MultiplayerGame extends AppCompatActivity {
         word = enemyWord;
 
         //Buttons für Buchstaben
-        buttonA = (Button) findViewById(R.id.buttonA);
-        buttonB = (Button) findViewById(R.id.buttonB);
-        buttonC = (Button) findViewById(R.id.buttonC);
-        buttonD = (Button) findViewById(R.id.buttonD);
-        buttonE = (Button) findViewById(R.id.buttonE);
-        buttonF = (Button) findViewById(R.id.buttonF);
-        buttonG = (Button) findViewById(R.id.buttonG);
-        buttonH = (Button) findViewById(R.id.buttonH);
-        buttonI = (Button) findViewById(R.id.buttonI);
-        buttonJ = (Button) findViewById(R.id.buttonJ);
-        buttonK = (Button) findViewById(R.id.buttonK);
-        buttonL = (Button) findViewById(R.id.buttonL);
-        buttonM = (Button) findViewById(R.id.buttonM);
-        buttonN = (Button) findViewById(R.id.buttonN);
-        buttonO = (Button) findViewById(R.id.buttonO);
-        buttonP = (Button) findViewById(R.id.buttonP);
-        buttonQ = (Button) findViewById(R.id.buttonQ);
-        buttonR = (Button) findViewById(R.id.buttonR);
-        buttonS = (Button) findViewById(R.id.buttonS);
-        buttonT = (Button) findViewById(R.id.buttonT);
-        buttonU = (Button) findViewById(R.id.buttonU);
-        buttonV = (Button) findViewById(R.id.buttonV);
-        buttonW = (Button) findViewById(R.id.buttonW);
-        buttonX = (Button) findViewById(R.id.buttonX);
-        buttonY = (Button) findViewById(R.id.buttonY);
-        buttonZ = (Button) findViewById(R.id.buttonZ);
+        buttonA = findViewById(R.id.buttonA);
+        buttonB = findViewById(R.id.buttonB);
+        buttonC = findViewById(R.id.buttonC);
+        buttonD = findViewById(R.id.buttonD);
+        buttonE = findViewById(R.id.buttonE);
+        buttonF = findViewById(R.id.buttonF);
+        buttonG = findViewById(R.id.buttonG);
+        buttonH = findViewById(R.id.buttonH);
+        buttonI = findViewById(R.id.buttonI);
+        buttonJ = findViewById(R.id.buttonJ);
+        buttonK = findViewById(R.id.buttonK);
+        buttonL = findViewById(R.id.buttonL);
+        buttonM = findViewById(R.id.buttonM);
+        buttonN = findViewById(R.id.buttonN);
+        buttonO = findViewById(R.id.buttonO);
+        buttonP = findViewById(R.id.buttonP);
+        buttonQ = findViewById(R.id.buttonQ);
+        buttonR = findViewById(R.id.buttonR);
+        buttonS = findViewById(R.id.buttonS);
+        buttonT = findViewById(R.id.buttonT);
+        buttonU = findViewById(R.id.buttonU);
+        buttonV = findViewById(R.id.buttonV);
+        buttonW = findViewById(R.id.buttonW);
+        buttonX = findViewById(R.id.buttonX);
+        buttonY = findViewById(R.id.buttonY);
+        buttonZ = findViewById(R.id.buttonZ);
 
         //Leerzeichen für Wort und Space dazwischen
-        letter1 = (TextView) findViewById(R.id.textView1);
-        letter2 = (TextView) findViewById(R.id.textView2);
-        letter3 = (TextView) findViewById(R.id.textView3);
-        letter4 = (TextView) findViewById(R.id.textView4);
-        letter5 = (TextView) findViewById(R.id.textView5);
-        letter6 = (TextView) findViewById(R.id.textView6);
-        letter7 = (TextView) findViewById(R.id.textView7);
-        letter8 = (TextView) findViewById(R.id.textView8);
-        letter9 = (TextView) findViewById(R.id.textView9);
+        letter1 = findViewById(R.id.textView1); //TextView
+        letter2 = findViewById(R.id.textView2);
+        letter3 = findViewById(R.id.textView3);
+        letter4 = findViewById(R.id.textView4);
+        letter5 = findViewById(R.id.textView5);
+        letter6 = findViewById(R.id.textView6);
+        letter7 = findViewById(R.id.textView7);
+        letter8 = findViewById(R.id.textView8);
+        letter9 = findViewById(R.id.textView9);
 
         letterArray[0] = letter1;
         letterArray[1] = letter2;
@@ -94,14 +94,14 @@ public class MultiplayerGame extends AppCompatActivity {
         letterArray[7] = letter8;
         letterArray[8] = letter9;
 
-        space1 = (TextView) findViewById(R.id.space1);
-        space2 = (TextView) findViewById(R.id.space2);
-        space3 = (TextView) findViewById(R.id.space3);
-        space4 = (TextView) findViewById(R.id.space4);
-        space5 = (TextView) findViewById(R.id.space5);
-        space6 = (TextView) findViewById(R.id.space6);
-        space7 = (TextView) findViewById(R.id.space7);
-        space8 = (TextView) findViewById(R.id.space8);
+        space1 = findViewById(R.id.space1); //TextView
+        space2 = findViewById(R.id.space2);
+        space3 = findViewById(R.id.space3);
+        space4 = findViewById(R.id.space4);
+        space5 = findViewById(R.id.space5);
+        space6 = findViewById(R.id.space6);
+        space7 = findViewById(R.id.space7);
+        space8 = findViewById(R.id.space8);
 
         //Zeige Striche je nach Wortlänge
         wordLength = word.length();
@@ -169,15 +169,15 @@ public class MultiplayerGame extends AppCompatActivity {
         }
 
         //Bilder
-        hangman0 = (ImageView) findViewById(R.id.hangman0);
-        hangman1 = (ImageView) findViewById(R.id.hangman1);
-        hangman2 = (ImageView) findViewById(R.id.hangman2);
-        hangman3 = (ImageView) findViewById(R.id.hangman3);
-        hangman4 = (ImageView) findViewById(R.id.hangman4);
-        hangman5 = (ImageView) findViewById(R.id.hangman5);
-        hangman6 = (ImageView) findViewById(R.id.hangman6);
-        hangman7 = (ImageView) findViewById(R.id.hangman7);
-        hangman8 = (ImageView) findViewById(R.id.hangman8);
+        hangman0 = findViewById(R.id.hangman0);
+        hangman1 = findViewById(R.id.hangman1);
+        hangman2 = findViewById(R.id.hangman2);
+        hangman3 = findViewById(R.id.hangman3);
+        hangman4 = findViewById(R.id.hangman4);
+        hangman5 = findViewById(R.id.hangman5);
+        hangman6 = findViewById(R.id.hangman6);
+        hangman7 = findViewById(R.id.hangman7);
+        hangman8 = findViewById(R.id.hangman8);
 
         //Bilder in Array
         imageArray[0] = hangman0;

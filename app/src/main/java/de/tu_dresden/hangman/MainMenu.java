@@ -20,10 +20,10 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        singleplayer = (Button) findViewById(R.id.buttonSingle);
-        multiplayer = (Button) findViewById(R.id.buttonMulti);
-        score = (Button) findViewById(R.id.buttonScore);
-        credits = (Button) findViewById(R.id.buttonCredits);
+        singleplayer = findViewById(R.id.buttonSingle);
+        multiplayer = findViewById(R.id.buttonMulti);
+        score = findViewById(R.id.buttonScore);
+        credits = findViewById(R.id.buttonCredits);
     }
 
     @Override

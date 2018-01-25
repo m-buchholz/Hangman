@@ -19,7 +19,7 @@ public class EndMultiplayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_multiplayer);
 
-        whoWins = (TextView) findViewById(R.id.textViewWinner);
+        whoWins = findViewById(R.id.textViewWinner);
 
         //Alle Infos von zuvor holen
         playerName = getIntent().getExtras().getString("playerName");

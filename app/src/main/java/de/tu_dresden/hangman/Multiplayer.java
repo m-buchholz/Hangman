@@ -19,9 +19,9 @@ public class Multiplayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer);
 
-        start = (Button)findViewById(R.id.buttonStartMP);
-        playerName = (EditText)findViewById(R.id.editPlayerNameMP);
-        enemyName = (EditText)findViewById(R.id.editEnemyName);
+        start = findViewById(R.id.buttonStartMP);
+        playerName = findViewById(R.id.editPlayerNameMP);
+        enemyName = findViewById(R.id.editEnemyName);
     }
 
     public void startMPWord(View view){

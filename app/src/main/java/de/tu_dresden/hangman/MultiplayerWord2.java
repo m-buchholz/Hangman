@@ -22,9 +22,9 @@ public class MultiplayerWord2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_word2);
 
-        startGame = (Button)findViewById(R.id.buttonStartMPGame);
-        editMultiWord = (EditText)findViewById(R.id.editMultiWord);
-        showActingPlayer = (TextView)findViewById(R.id.showActingPlayer);
+        startGame = findViewById(R.id.buttonStartMPGame);
+        editMultiWord = findViewById(R.id.editMultiWord);
+        showActingPlayer = findViewById(R.id.showActingPlayer);
 
         //Namen und Wort abrufen
         playerName = getIntent().getExtras().getString("playerName");

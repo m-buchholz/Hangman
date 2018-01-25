@@ -23,8 +23,8 @@ public class Lose extends AppCompatActivity {
         playerName = getIntent().getExtras().getString("playerName");
         tries = Integer.toString(getIntent().getExtras().getInt("tries"));
 
-        notice = (TextView) findViewById(R.id.lose_notice);
-        shareButton = (Button) findViewById(R.id.share);
+        notice = findViewById(R.id.lose_notice);
+        shareButton = findViewById(R.id.share);
 
         notice.setText("Du hast leider, mit "+tries+" Versuchen, verloren, "+playerName+".");
 

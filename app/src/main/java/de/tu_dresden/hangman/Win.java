@@ -22,8 +22,8 @@ public class Win extends AppCompatActivity {
         playerName = getIntent().getExtras().getString("playerName"); //Spielernamen importieren
         tries = Integer.toString(getIntent().getExtras().getInt("tries"));
 
-        notice = (TextView) findViewById(R.id.win_notice);
-        shareButton = (Button) findViewById(R.id.share);
+        notice = findViewById(R.id.win_notice);
+        shareButton = findViewById(R.id.share);
 
         notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+tries+" Versuchen gewonnen!");
 
