@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp"
     tools:ignore="ContentDescription">
 
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        <!--app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
@@ -16,7 +16,7 @@
 
         app:layout_constraintBottom_toBottomOf="@+id/simpleImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/simpleImageView" />
+        app:layout_constraintTop_toTopOf="@+id/simpleImageView" />-->
 
 
     <ImageView
