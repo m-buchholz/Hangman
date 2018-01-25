@@ -41,8 +41,6 @@ public class EndMultiplayer extends AppCompatActivity {
     }
 
     public void endGame(View view){
-        Intent mainMenu = new Intent(this, MainMenu.class);
-        startActivity(mainMenu);
         finish();
     }
 

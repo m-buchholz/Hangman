@@ -70,7 +70,7 @@
             android:id="@+id/share"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/RepeatButton"
+            android:layout_above="@+id/repeatB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:text="@string/teilen"
@@ -78,7 +78,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
-            android:id="@+id/endButton"
+            android:id="@+id/endB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -89,14 +89,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RepeatButton"
+            app:layout_constraintTop_toBottomOf="@+id/repeatB"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/RepeatButton"
+            android:id="@+id/repeatB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/endButton"
+            android:layout_above="@+id/endB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:onClick="openSingleplayer"
