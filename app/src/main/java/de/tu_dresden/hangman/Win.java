@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 public class Win extends AppCompatActivity {
 
-    String playerName, word;
-    int tries;
+    String playerName, word, tries;
     TextView notice;
     Button shareButton;
 
@@ -21,12 +20,12 @@ public class Win extends AppCompatActivity {
 
         word = getIntent().getExtras().getString("word");
         playerName = getIntent().getExtras().getString("playerName"); //Spielernamen importieren
-        tries = getIntent().getExtras().getInt("tries");
+        tries = Integer.toString(getIntent().getExtras().getInt("tries"));
 
         notice = (TextView) findViewById(R.id.win_notice);
         shareButton = (Button) findViewById(R.id.share);
 
-        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+Integer.toString(tries)+" Versuchen gewonnen!");
+        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+tries+" Versuchen gewonnen!");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +33,9 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                String counter = "Geschafft nach: " +Integer.toString(tries);
-                String platzhalter = "                                              ";
+                String counter = "Geschafft nach: " +tries;
                 String result = " hat überlebt!";
-                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ " Versuchen." + platzhalter + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + result + "\n" + counter /*+ Versuchen*/+ " Versuchen." + "\n" + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
