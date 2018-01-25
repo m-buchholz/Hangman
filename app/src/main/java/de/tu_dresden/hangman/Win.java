@@ -37,7 +37,7 @@ public class Win extends AppCompatActivity {
                 String counter = "Geschafft nach: " +Integer.toString(tries);
                 String platzhalter = "                                              ";
                 String result = " hat überlebt!";
-                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ " Versuchen." + platzhalter + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });

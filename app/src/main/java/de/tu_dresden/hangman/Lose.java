@@ -38,7 +38,7 @@ public class Lose extends AppCompatActivity {
                 String counter = "Verloren nach: " + Integer.toString(tries);
                 String platzhalter = "                                              ";
                 String result = " wurde erhängt!";
-                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ "Versuchen." + platzhalter + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,"" + playerName + result + platzhalter + counter /*+ Versuchen*/+ " Versuchen." + platzhalter + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
