@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 public class Multiplayer extends AppCompatActivity {
 
+    public static final String ENEMY_NAME = "enemyName";
+    public static final String PLAYER_NAME = "playerName";
+    public static final String GIB_ZWEI_GAMERTAGS_EIN = "Gib zwei Gamertags ein!";
     Button start;
     EditText playerName,enemyName;
     String StringplayerName, StringenemyName ;
@@ -23,24 +26,24 @@ public class Multiplayer extends AppCompatActivity {
         playerName = findViewById(R.id.editPlayerNameMP);
         enemyName = findViewById(R.id.editEnemyName);
 
-        if (getIntent().hasExtra("playerName") && getIntent().hasExtra("enemyName")){ //wenn bereits gespielt -> trage letzte Namen in EditText ein
-            StringplayerName = getIntent().getExtras().getString("playerName");
+        if (getIntent().hasExtra(PLAYER_NAME) && getIntent().hasExtra(ENEMY_NAME)){ //wenn bereits gespielt -> trage letzte Namen in EditText ein
+            StringplayerName = getIntent().getExtras().getString(PLAYER_NAME);
             playerName.setText(StringplayerName);
-            StringenemyName = getIntent().getExtras().getString("enemyName");
+            StringenemyName = getIntent().getExtras().getString(ENEMY_NAME);
             enemyName.setText(StringenemyName);
         }
     }
 
     public void startMPWord(View view){
         if(playerName.getText().toString().isEmpty() == true || enemyName.getText().toString().isEmpty() == true){
-            Toast.makeText(getApplicationContext(),"Gib zwei Gamertags ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+            Toast.makeText(getApplicationContext(), GIB_ZWEI_GAMERTAGS_EIN,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
         }
         else{
             StringplayerName = playerName.getText().toString();
             StringenemyName = enemyName.getText().toString();
             Intent multiplayer_word = new Intent(this, MultiplayerWord.class);
-            multiplayer_word.putExtra("playerName", StringplayerName);
-            multiplayer_word.putExtra("enemyName", StringenemyName);
+            multiplayer_word.putExtra(PLAYER_NAME, StringplayerName);
+            multiplayer_word.putExtra(ENEMY_NAME, StringenemyName);
             startActivity(multiplayer_word);
             finish();
         }

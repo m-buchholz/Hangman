@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class Singleplayer extends AppCompatActivity {
 
+    public static final String GIB_DEINEN_GAMERTAG_EIN = "Gib deinen Gamertag ein!";
+    public static final String PLAYER_NAME = "playerName";
     Button start;
     EditText name;
     String playerName;
@@ -24,8 +26,8 @@ public class Singleplayer extends AppCompatActivity {
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
 
-        if (getIntent().hasExtra("playerName")) {
-            playerName = getIntent().getExtras().getString("playerName");
+        if (getIntent().hasExtra(PLAYER_NAME)) {
+            playerName = getIntent().getExtras().getString(PLAYER_NAME);
             name.setText(playerName);
         }
     }
@@ -34,12 +36,12 @@ public class Singleplayer extends AppCompatActivity {
         if(name.getText().toString().isEmpty() == false){
             playerName = name.getText().toString();
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
-            startSPGame.putExtra("playerName", playerName);
+            startSPGame.putExtra(PLAYER_NAME, playerName);
             startActivity(startSPGame);
             finish();
         }
         else{
-            Toast.makeText(getApplicationContext(),"Gib deinen Gamertag ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+            Toast.makeText(getApplicationContext(), GIB_DEINEN_GAMERTAG_EIN,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
         }
     }
 }

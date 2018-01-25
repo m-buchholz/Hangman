@@ -21,8 +21,32 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SingleplayerGame extends AppCompatActivity {
 
+    public static final String TRIES = "tries";
+    public static final String PLAYER_NAME = "playerName";
+    public static final String WORD = "word";
+    public static final String PULLOVER = "PULLOVER";
+    public static final String SACHSEN = "SACHSEN";
+    public static final String BAYERN = "BAYERN";
+    public static final String INSEL = "INSEL";
+    public static final String GLAS = "GLAS";
+    public static final String QUALLE = "QUALLE";
+    public static final String FISCH = "FISCH";
+    public static final String ENTE = "ENTE";
+    public static final String GANS = "GANS";
+    public static final String FUCHS = "FUCHS";
+    public static final String GEIER = "GEIER";
+    public static final String ZUSTAND = "ZUSTAND";
+    public static final String FREUND = "FREUND";
+    public static final String HAMBURGER = "HAMBURGER";
+    public static final String KUCHEN = "KUCHEN";
+    public static final String TIGER = "TIGER";
+    public static final String PAPAGEI = "PAPAGEI";
+    public static final String MAUS = "MAUS";
+    public static final String HUND = "HUND";
+    public static final String KATZE = "KATZE";
+    public static final String KATZENKLO = "Katzenklo";
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
-    String[] wordlist = {"Katzenklo", "KATZE", "HUND", "MAUS", "PAPAGEI", "TIGER", "KUCHEN", "HAMBURGER", "FREUND", "ZUSTAND", "FISCH", "GEIER", "FUCHS", "GANS", "ENTE", "FISCH", "QUALLE", "GLAS", "INSEL", "BAYERN", "SACHSEN", "PULLOVER"};
+    String[] wordlist = {KATZENKLO, KATZE, HUND, MAUS, PAPAGEI, TIGER, KUCHEN, HAMBURGER, FREUND, ZUSTAND, FISCH, GEIER, FUCHS, GANS, ENTE, FISCH, QUALLE, GLAS, INSEL, BAYERN, SACHSEN, PULLOVER};
 
     //Random number
     int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
@@ -47,7 +71,7 @@ public class SingleplayerGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
 
-        playerName = getIntent().getExtras().getString("playerName");
+        playerName = getIntent().getExtras().getString(PLAYER_NAME);
         Button[] buttons = {buttonA, buttonB};
 
         //Buttons für Buchstaben
@@ -227,9 +251,9 @@ public class SingleplayerGame extends AppCompatActivity {
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
                     letterArray[i].setText(currentL.toString());
-                    win.putExtra("word", word); //Werte übergeben
-                    win.putExtra("playerName", playerName);
-                    win.putExtra("tries", counter);
+                    win.putExtra(WORD, word); //Werte übergeben
+                    win.putExtra(PLAYER_NAME, playerName);
+                    win.putExtra(TRIES, counter);
                     startActivity(win);
                     finish(); //Activity schliessen
                 }
@@ -254,9 +278,9 @@ public class SingleplayerGame extends AppCompatActivity {
             countertest=0;
             //wenn Maxium an Fehlversuchen erreicht -> lost activity
             if(counter == max-1){
-                lost.putExtra("word", word); //Werte übergeben
-                lost.putExtra("playerName", playerName);
-                lost.putExtra("tries", counter);
+                lost.putExtra(WORD, word); //Werte übergeben
+                lost.putExtra(PLAYER_NAME, playerName);
+                lost.putExtra(TRIES, counter);
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 imageArray[counter-2].setVisibility(View.INVISIBLE);

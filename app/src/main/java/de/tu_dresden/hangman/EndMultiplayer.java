@@ -9,6 +9,17 @@ import android.widget.TextView;
 
 public class EndMultiplayer extends AppCompatActivity {
 
+    public static final String PLAYER_NAME = "playerName";
+    public static final String UNENTSCHIEDEN = "Unentschieden!";
+    public static final String FEHLVERSUCHEN = " Fehlversuchen!";
+    public static final String ZU = " zu ";
+    public static final String GEWONNEN_MIT = " gewonnen, mit ";
+    public static final String HAT_GEGEN = " hat gegen ";
+    public static final String TRIES_PLAYER = "triesPlayer";
+    public static final String TRIES_ENEMY = "triesEnemy";
+    public static final String ENEMY_WORD = "enemyWord";
+    public static final String PLAYER_WORD = "playerWord";
+    public static final String ENEMY_NAME = "enemyName";
     TextView whoWins;
 
     String playerName, enemyName, playerWord, enemyWord;
@@ -22,21 +33,21 @@ public class EndMultiplayer extends AppCompatActivity {
         whoWins = findViewById(R.id.textViewWinner);
 
         //Alle Infos von zuvor holen
-        playerName = getIntent().getExtras().getString("playerName");
-        enemyName = getIntent().getExtras().getString("enemyName");
-        playerWord = getIntent().getExtras().getString("playerWord");
-        enemyWord = getIntent().getExtras().getString("enemyWord");
-        triesEnemy = getIntent().getExtras().getInt("triesEnemy");
-        triesPlayer = getIntent().getExtras().getInt("triesPlayer");
+        playerName = getIntent().getExtras().getString(PLAYER_NAME);
+        enemyName = getIntent().getExtras().getString(ENEMY_NAME);
+        playerWord = getIntent().getExtras().getString(PLAYER_WORD);
+        enemyWord = getIntent().getExtras().getString(ENEMY_WORD);
+        triesEnemy = getIntent().getExtras().getInt(TRIES_ENEMY);
+        triesPlayer = getIntent().getExtras().getInt(TRIES_PLAYER);
 
         if(triesEnemy < triesPlayer){
-            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen, mit " + triesEnemy + " zu " + triesPlayer + " Fehlversuchen!");
+            whoWins.setText(enemyName + HAT_GEGEN + playerName + GEWONNEN_MIT + triesEnemy + ZU + triesPlayer + FEHLVERSUCHEN);
         }
         else if (triesPlayer < triesEnemy){
-            whoWins.setText(playerName + " hat gegen " + enemyName + " gewonnen, mit " + triesPlayer + " zu " + triesEnemy + " Fehlversuchen!");
+            whoWins.setText(playerName + HAT_GEGEN + enemyName + GEWONNEN_MIT + triesPlayer + ZU + triesEnemy + FEHLVERSUCHEN);
         }
         else if (triesPlayer == triesEnemy){
-            whoWins.setText("Unentschieden!");
+            whoWins.setText(UNENTSCHIEDEN);
         }
     }
 
@@ -46,8 +57,8 @@ public class EndMultiplayer extends AppCompatActivity {
 
     public void playAgain(View view){
         Intent MPGame = new Intent(this, Multiplayer.class);
-        MPGame.putExtra("playerName", playerName);
-        MPGame.putExtra("enemyName", enemyName);
+        MPGame.putExtra(PLAYER_NAME, playerName);
+        MPGame.putExtra(ENEMY_NAME, enemyName);
         startActivity(MPGame);
         finish();
     }

@@ -12,6 +12,13 @@ import java.util.HashMap;
 
 public class MultiplayerGame2 extends AppCompatActivity {
 
+    public static final String TRIES_PLAYER = "triesPlayer";
+    public static final String TRIES_ENEMY = "triesEnemy";
+    public static final String PLAYER_NAME = "playerName";
+    public static final String ENEMY_NAME = "enemyName";
+    public static final String PLAYER_WORD = "playerWord";
+    public static final String ENEMY_WORD = "enemyWord";
+    public static final String IST_AN_DER_REIHE = " ist an der Reihe!";
     String playerName, enemyName, word, playerWord, enemyWord;
     int triesEnemy;
 
@@ -34,15 +41,15 @@ public class MultiplayerGame2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_game2);
 
-        playerName = getIntent().getExtras().getString("playerName");
-        enemyName = getIntent().getExtras().getString("enemyName");
-        playerWord = getIntent().getExtras().getString("playerWord");
-        enemyWord = getIntent().getExtras().getString("enemyWord");
-        triesEnemy = getIntent().getExtras().getInt("triesEnemy");
+        playerName = getIntent().getExtras().getString(PLAYER_NAME);
+        enemyName = getIntent().getExtras().getString(ENEMY_NAME);
+        playerWord = getIntent().getExtras().getString(PLAYER_WORD);
+        enemyWord = getIntent().getExtras().getString(ENEMY_WORD);
+        triesEnemy = getIntent().getExtras().getInt(TRIES_ENEMY);
 
         //Wer ist dran?
         playersTurn = findViewById(R.id.playersTurn);
-        playersTurn.setText(playerName + " ist an der Reihe!");
+        playersTurn.setText(playerName + IST_AN_DER_REIHE);
 
         //Player ist jetzt dran
         word = playerWord;
@@ -230,12 +237,12 @@ public class MultiplayerGame2 extends AppCompatActivity {
             } else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size() - 1)) {
                 letterArray[i].setText(currentL.toString());
 
-                endGame.putExtra("enemyWord", enemyWord);
-                endGame.putExtra("playerWord", playerWord);
-                endGame.putExtra("enemyName", enemyName);
-                endGame.putExtra("playerName", playerName);
-                endGame.putExtra("triesEnemy", triesEnemy);
-                endGame.putExtra("triesPlayer", counter);
+                endGame.putExtra(ENEMY_WORD, enemyWord);
+                endGame.putExtra(PLAYER_WORD, playerWord);
+                endGame.putExtra(ENEMY_NAME, enemyName);
+                endGame.putExtra(PLAYER_NAME, playerName);
+                endGame.putExtra(TRIES_ENEMY, triesEnemy);
+                endGame.putExtra(TRIES_PLAYER, counter);
                 startActivity(endGame);
                 finish();
 
@@ -260,12 +267,12 @@ public class MultiplayerGame2 extends AppCompatActivity {
         //Wenn Maxium an Fehlversuchen erreicht -> lost activity
         if (counter == max - 1) {
 
-            endGame.putExtra("enemyWord", enemyWord);
-            endGame.putExtra("playerWord", playerWord);
-            endGame.putExtra("enemyName", enemyName);
-            endGame.putExtra("playerName", playerName);
-            endGame.putExtra("triesEnemy", triesEnemy);
-            endGame.putExtra("triesPlayer", counter);
+            endGame.putExtra(ENEMY_WORD, enemyWord);
+            endGame.putExtra(PLAYER_WORD, playerWord);
+            endGame.putExtra(ENEMY_NAME, enemyName);
+            endGame.putExtra(PLAYER_NAME, playerName);
+            endGame.putExtra(TRIES_ENEMY, triesEnemy);
+            endGame.putExtra(TRIES_PLAYER, counter);
             startActivity(endGame);
             finish();
 

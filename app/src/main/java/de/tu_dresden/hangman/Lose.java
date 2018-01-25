@@ -10,6 +10,17 @@ import android.widget.TextView;
 
 public class Lose extends AppCompatActivity {
 
+    public static final String PLAYER_NAME = "playerName";
+    public static final String ZEIGE_ES_DEINEN_FREUNDEN = "Zeige es deinen Freunden";
+    public static final String DAS_WORT_WAR = "Das Wort war: ";
+    public static final String FEHLVERSUCHEN = " Fehlversuchen. \n";
+    public static final String VERLOREN_NACH = "Verloren nach ";
+    public static final String WURDE_ERHÄNGT = " wurde erhängt! \n";
+    public static final String HANGMAN = "Hangman";
+    public static final String TEXT_PLAIN = "text/plain";
+    public static final String DU_HAST_LEIDER_VERLOREN = "Du hast leider verloren, ";
+    public static final String TRIES = "tries";
+    public static final String WORD = "word";
     String playerName, word, tries;
     TextView notice;
     Button shareButton;
@@ -19,30 +30,30 @@ public class Lose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lose);
 
-        word = getIntent().getExtras().getString("word");
-        playerName = getIntent().getExtras().getString("playerName");
-        tries = Integer.toString(getIntent().getExtras().getInt("tries"));
+        word = getIntent().getExtras().getString(WORD);
+        playerName = getIntent().getExtras().getString(PLAYER_NAME);
+        tries = Integer.toString(getIntent().getExtras().getInt(TRIES));
 
         notice = findViewById(R.id.lose_notice);
         shareButton = findViewById(R.id.share);
 
-        notice.setText("Du hast leider verloren, "+playerName+".");
+        notice.setText(DU_HAST_LEIDER_VERLOREN +playerName+".");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("text/plain");
-                share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                share.putExtra(Intent.EXTRA_TEXT,playerName + " wurde erhängt! \n" + "Verloren nach " + tries + " Fehlversuchen. \n" + "Das Wort war: " + word );
-                startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
+                share.setType(TEXT_PLAIN);
+                share.putExtra(Intent.EXTRA_SUBJECT, HANGMAN);
+                share.putExtra(Intent.EXTRA_TEXT,playerName + WURDE_ERHÄNGT + VERLOREN_NACH + tries + FEHLVERSUCHEN + DAS_WORT_WAR + word );
+                startActivity(Intent.createChooser(share, ZEIGE_ES_DEINEN_FREUNDEN));
             }
         });
     }
 
     public void openSingleplayer(View view){
         Intent singleplayer = new Intent(this, Singleplayer.class);
-        singleplayer.putExtra("playerName", playerName);
+        singleplayer.putExtra(PLAYER_NAME, playerName);
         startActivity(singleplayer);
         finish();
     }
