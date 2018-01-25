@@ -30,10 +30,10 @@ public class EndMultiplayer extends AppCompatActivity {
         triesPlayer = getIntent().getExtras().getInt("triesPlayer");
 
         if(triesEnemy < triesPlayer){
-            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen!" );
+            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen, mit " + enemyName + " zu " + triesPlayer + " Versuchen!");
         }
         else if (triesPlayer < triesEnemy){
-            whoWins.setText(playerName + " hat gegen " + enemyName + " gewonnen!");
+            whoWins.setText(playerName + " hat gegen " + enemyName + "gewonnen, mit " + triesPlayer + " zu " + triesEnemy + " Versuchen!");
         }
         else if (triesPlayer == triesEnemy){
             whoWins.setText("Unentschieden!");
