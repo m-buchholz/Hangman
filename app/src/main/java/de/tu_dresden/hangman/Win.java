@@ -26,7 +26,7 @@ public class Win extends AppCompatActivity {
         notice = (TextView) findViewById(R.id.win_notice);
         shareButton = (Button) findViewById(R.id.share);
 
-        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast gewonnen!");
+        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+Integer.toString(tries)+" Versuchen gewonnen!");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override

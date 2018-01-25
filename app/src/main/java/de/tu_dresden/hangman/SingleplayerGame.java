@@ -256,7 +256,7 @@ public class SingleplayerGame extends AppCompatActivity {
             if(counter == max-1){
                 lost.putExtra("word", word); //Werte übergeben
                 lost.putExtra("playerName", playerName);
-                lost.putExtra("tries", counterright);
+                lost.putExtra("tries", counter);
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 finish(); //Activity schließen

@@ -27,7 +27,7 @@ public class Lose extends AppCompatActivity {
         notice = (TextView) findViewById(R.id.lose_notice);
         shareButton = (Button) findViewById(R.id.share);
 
-        notice.setText("Du hast leider verloren, "+playerName+".");
+        notice.setText("Du hast leider, mit "+Integer.toString(tries)+" Versuchen, verloren, "+playerName+".");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
