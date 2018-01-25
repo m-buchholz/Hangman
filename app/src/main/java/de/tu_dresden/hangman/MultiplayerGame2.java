@@ -219,7 +219,7 @@ public class MultiplayerGame2 extends AppCompatActivity {
         }
 
 
-        //Intent für ende
+        //Intent für Ende
         Intent endGame = new Intent(this, EndMultiplayer.class);
 
         for (int i = 0; i < wordLength; i++) {
@@ -257,7 +257,7 @@ public class MultiplayerGame2 extends AppCompatActivity {
             counter++;
         }
         countertest = 0;
-        //wenn maxium an fehlversuchen erreicht -> lost activity
+        //Wenn Maxium an Fehlversuchen erreicht -> lost activity
         if (counter == max - 1) {
 
             endGame.putExtra("enemyWord", enemyWord);
@@ -269,9 +269,9 @@ public class MultiplayerGame2 extends AppCompatActivity {
             startActivity(endGame);
             finish();
 
-            imageArray[counter - 1].setVisibility(View.VISIBLE);
+            imageArray[counter-1].setVisibility(View.VISIBLE);
             imageArray[counter-2].setVisibility(View.INVISIBLE);
-            //finish(); //Activity schließen (wenn verloren)
+            //finish(); //Activity schliessen (wenn verloren)
         } else if (counter > 0 && counter < (max - 1)) {
             imageArray[counter - 1].setVisibility(View.VISIBLE);
             if (counter > 1) imageArray[counter-2].setVisibility(View.INVISIBLE);

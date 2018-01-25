@@ -26,7 +26,7 @@ public class Lose extends AppCompatActivity {
         notice = findViewById(R.id.lose_notice);
         shareButton = findViewById(R.id.share);
 
-        notice.setText("Du hast leider, mit "+tries+" Versuchen, verloren, "+playerName+".");
+        notice.setText("Du hast leider verloren, "+playerName+".");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +34,7 @@ public class Lose extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                share.putExtra(Intent.EXTRA_TEXT,playerName + " wurde erhängt! \n" + "Verloren nach: " + tries + " Versuchen. \n" + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + " wurde erhängt! \n" + "Verloren nach " + tries + " Fehlversuchen. \n" + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
@@ -42,6 +42,7 @@ public class Lose extends AppCompatActivity {
 
     public void openSingleplayer(View view){
         Intent singleplayer = new Intent(this, Singleplayer.class);
+        singleplayer.putExtra("playerName", playerName);
         startActivity(singleplayer);
         finish();
     }

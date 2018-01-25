@@ -23,6 +23,11 @@ public class Singleplayer extends AppCompatActivity {
 
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
+
+        if (getIntent().hasExtra("playerName")) {
+            playerName = getIntent().getExtras().getString("playerName");
+            name.setText(playerName);
+        }
     }
 
     public void startSPGame(View view){

@@ -229,9 +229,9 @@ public class SingleplayerGame extends AppCompatActivity {
                     letterArray[i].setText(currentL.toString());
                     win.putExtra("word", word); //Werte übergeben
                     win.putExtra("playerName", playerName);
-                    lost.putExtra("tries", counterright);
+                    win.putExtra("tries", counter);
                     startActivity(win);
-                    finish(); //Activity schließen
+                    finish(); //Activity schliessen
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
                     letterArray[i].setText(currentL.toString());
@@ -260,7 +260,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 imageArray[counter-2].setVisibility(View.INVISIBLE);
-                finish(); //Activity schließen
+                finish(); //Activity schliessen
             }
             else if (counter > 0 && counter < (max-1)){
                 imageArray[counter-1].setVisibility(View.VISIBLE);

@@ -22,15 +22,22 @@ public class Multiplayer extends AppCompatActivity {
         start = findViewById(R.id.buttonStartMP);
         playerName = findViewById(R.id.editPlayerNameMP);
         enemyName = findViewById(R.id.editEnemyName);
+
+        if (getIntent().hasExtra("playerName") && getIntent().hasExtra("enemyName")){ //wenn bereits gespielt -> trage letzte Namen in EditText ein
+            StringplayerName = getIntent().getExtras().getString("playerName");
+            playerName.setText(StringplayerName);
+            StringenemyName = getIntent().getExtras().getString("enemyName");
+            enemyName.setText(StringenemyName);
+        }
     }
 
     public void startMPWord(View view){
-        StringplayerName = playerName.getText().toString();
-        StringenemyName = enemyName.getText().toString();
-        if(StringplayerName.equalsIgnoreCase("") || StringenemyName.equalsIgnoreCase("")){
-            Toast.makeText(getApplicationContext(),"Gib Gamertags ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
+        if(playerName.getText().toString().isEmpty() == true || enemyName.getText().toString().isEmpty() == true){
+            Toast.makeText(getApplicationContext(),"Gib zwei Gamertags ein!",Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
         }
         else{
+            StringplayerName = playerName.getText().toString();
+            StringenemyName = enemyName.getText().toString();
             Intent multiplayer_word = new Intent(this, MultiplayerWord.class);
             multiplayer_word.putExtra("playerName", StringplayerName);
             multiplayer_word.putExtra("enemyName", StringenemyName);

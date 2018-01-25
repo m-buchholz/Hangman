@@ -30,10 +30,10 @@ public class EndMultiplayer extends AppCompatActivity {
         triesPlayer = getIntent().getExtras().getInt("triesPlayer");
 
         if(triesEnemy < triesPlayer){
-            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen, mit " + enemyName + " zu " + triesPlayer + " Versuchen!");
+            whoWins.setText(enemyName + " hat gegen " + playerName + " gewonnen, mit " + triesEnemy + " zu " + triesPlayer + " Fehlversuchen!");
         }
         else if (triesPlayer < triesEnemy){
-            whoWins.setText(playerName + " hat gegen " + enemyName + " gewonnen, mit " + triesPlayer + " zu " + triesEnemy + " Versuchen!");
+            whoWins.setText(playerName + " hat gegen " + enemyName + " gewonnen, mit " + triesPlayer + " zu " + triesEnemy + " Fehlversuchen!");
         }
         else if (triesPlayer == triesEnemy){
             whoWins.setText("Unentschieden!");
@@ -46,6 +46,8 @@ public class EndMultiplayer extends AppCompatActivity {
 
     public void playAgain(View view){
         Intent MPGame = new Intent(this, Multiplayer.class);
+        MPGame.putExtra("playerName", playerName);
+        MPGame.putExtra("enemyName", enemyName);
         startActivity(MPGame);
         finish();
     }

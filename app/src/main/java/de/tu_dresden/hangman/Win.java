@@ -25,7 +25,7 @@ public class Win extends AppCompatActivity {
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
 
-        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+tries+" Versuchen gewonnen!");
+        notice.setText("Herzlichen Glückwunsch "+playerName+", du hast mit "+tries+" Fehlversuchen gewonnen!");
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +33,7 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT,"Hangman");
-                share.putExtra(Intent.EXTRA_TEXT,playerName + " hat  überlebt! \n" + "Geschafft nach: " + tries + " Versuchen. \n" + "Das Wort war: " + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + " hat überlebt! \n" + "Geschafft nach " + tries + " Fehlversuchen. \n" + "Das Wort war: " + word );
                 startActivity(Intent.createChooser(share, "Zeige es deinen Freunden"));
             }
         });
@@ -41,6 +41,7 @@ public class Win extends AppCompatActivity {
 
     public void openSingleplayer(View view){
         Intent singleplayer = new Intent(this, Singleplayer.class);
+        singleplayer.putExtra("playerName", playerName);
         startActivity(singleplayer);
         finish();
     }
