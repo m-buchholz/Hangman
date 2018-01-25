@@ -229,6 +229,7 @@ public class SingleplayerGame extends AppCompatActivity {
                     letterArray[i].setText(currentL.toString());
                     win.putExtra("word", word); //Werte übergeben
                     win.putExtra("playerName", playerName);
+                    lost.putExtra("tries", counterright);
                     startActivity(win);
                     finish(); //Activity schließen
                 }
@@ -255,6 +256,7 @@ public class SingleplayerGame extends AppCompatActivity {
             if(counter == max-1){
                 lost.putExtra("word", word); //Werte übergeben
                 lost.putExtra("playerName", playerName);
+                lost.putExtra("tries", counterright);
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 finish(); //Activity schließen

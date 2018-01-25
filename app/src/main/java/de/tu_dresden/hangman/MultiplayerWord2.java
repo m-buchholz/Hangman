@@ -37,13 +37,13 @@ public class MultiplayerWord2 extends AppCompatActivity {
     public void startMPGame(View view) {
         playerWord = editMultiWord.getText().toString().toUpperCase();
 
-        if (enemyWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")) {
+        if (playerWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")) {
             Toast.makeText(getApplicationContext(), "Gib ein Wort ein!", Toast.LENGTH_LONG).show();
         }
-        else if (enemyWord.length() < 5) {
+        else if (playerWord.length() < 5) {
             Toast.makeText(getApplicationContext(), "Gib ein Wort mit mehr als 4 Buchstaben ein!", Toast.LENGTH_LONG).show();
         }
-        else if (enemyWord.length() > 9) {
+        else if (playerWord.length() > 9) {
            Toast.makeText(getApplicationContext(), "Gib ein Wort mit weniger als 9 Buchstaben ein!", Toast.LENGTH_LONG).show();
         }
         else {
