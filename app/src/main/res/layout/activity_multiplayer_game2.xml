@@ -552,7 +552,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman8" />
+        app:srcCompat="@drawable/hangman0" />
 
     <ImageView
         android:id="@+id/hangman1"
@@ -565,7 +565,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman7" />
+        app:srcCompat="@drawable/hangman1" />
 
     <ImageView
         android:id="@+id/hangman2"
@@ -578,7 +578,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman6" />
+        app:srcCompat="@drawable/hangman2" />
 
     <ImageView
         android:id="@+id/hangman3"
@@ -591,7 +591,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman5" />
+        app:srcCompat="@drawable/hangman3" />
 
     <ImageView
         android:id="@+id/hangman4"
@@ -617,7 +617,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman3" />
+        app:srcCompat="@drawable/hangman5" />
 
     <ImageView
         android:id="@+id/hangman6"
@@ -630,7 +630,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman2" />
+        app:srcCompat="@drawable/hangman6" />
 
     <ImageView
         android:id="@+id/hangman7"
@@ -643,7 +643,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman1" />
+        app:srcCompat="@drawable/hangman7" />
 
     <ImageView
         android:id="@+id/hangman8"
@@ -656,7 +656,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hangman0" />
+        app:srcCompat="@drawable/hangman8" />
 
     <TextView
         android:id="@+id/playersTurn"

@@ -270,9 +270,11 @@ public class MultiplayerGame2 extends AppCompatActivity {
             finish();
 
             imageArray[counter - 1].setVisibility(View.VISIBLE);
+            imageArray[counter-2].setVisibility(View.INVISIBLE);
             //finish(); //Activity schließen (wenn verloren)
         } else if (counter > 0 && counter < (max - 1)) {
             imageArray[counter - 1].setVisibility(View.VISIBLE);
+            if (counter > 1) imageArray[counter-2].setVisibility(View.INVISIBLE);
         }
 
     }

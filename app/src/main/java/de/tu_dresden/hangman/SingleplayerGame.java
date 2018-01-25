@@ -259,10 +259,12 @@ public class SingleplayerGame extends AppCompatActivity {
                 lost.putExtra("tries", counter);
                 startActivity(lost);
                 imageArray[counter-1].setVisibility(View.VISIBLE);
+                imageArray[counter-2].setVisibility(View.INVISIBLE);
                 finish(); //Activity schließen
             }
             else if (counter > 0 && counter < (max-1)){
                 imageArray[counter-1].setVisibility(View.VISIBLE);
+                if (counter > 1) imageArray[counter-2].setVisibility(View.INVISIBLE);
             }
     }
 
