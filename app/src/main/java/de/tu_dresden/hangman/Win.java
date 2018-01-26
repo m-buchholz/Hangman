@@ -87,6 +87,10 @@ public class Win extends AppCompatActivity {
                 0, //Platz 10
         };
 
+        //////////////////SCORE//////////////////
+
+        //////////////////SCORESCHLEIFE//////////////////
+
         for (int i=0; i<=9; i++) { // Schleife um Score auf entsprechenden Platz zu setzen, bzw. Elemente auch nachzuruecken
             if (scoreWords[i]<passedWords) {
                 for (int r=9; r>0; r--){ //Elemente ruecken
@@ -100,22 +104,22 @@ public class Win extends AppCompatActivity {
                 scoreTries[i] = tries;
 
             } else if (scoreWords[i]==passedWords){
-                    if (scoreTries[i]>tries) {
+                if (scoreTries[i]>tries) {
 
-                        for (int r=9; r>0; r--){ //Elemente ruecken
-                            scorePlayer[r]=scorePlayer[r-1];
-                            scoreWords[r]=scoreWords[r-1];
-                            scoreTries[r]=scoreTries[r-1];
-                        }
-
-                        scorePlayer[i] = playerName;
-                        scoreWords[i] = passedWords;
-                        scoreTries[i] = tries;
+                    for (int r=9; r>0; r--){ //Elemente ruecken
+                        scorePlayer[r]=scorePlayer[r-1];
+                        scoreWords[r]=scoreWords[r-1];
+                        scoreTries[r]=scoreTries[r-1];
                     }
-            }
-            }
 
-        //////////////////SCORE//////////////////
+                    scorePlayer[i] = playerName;
+                    scoreWords[i] = passedWords;
+                    scoreTries[i] = tries;
+                }
+            }
+        }
+
+        //////////////////SCORESCHLEIFE//////////////////
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
