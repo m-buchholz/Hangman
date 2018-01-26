@@ -72,13 +72,16 @@ public class Win extends AppCompatActivity {
         };
 
         for (int i=0; i<10; i++) { // Schleife um Score auf entsprechenden Platz zu setzen.
-            if (scoreWords[i]>passedWords) {
-                if (scoreTries[i]>tries) {
-                    scoreWords[i] = passedWords;
-                    scoreTries[i] = tries;
-                }
+            if (scoreWords[i]<passedWords) {
+                scoreWords[i] = passedWords;
+                scoreTries[i] = tries;
+            } else if (scoreWords[i]==passedWords){
+                    if (scoreTries[i]>tries) {
+                        scoreWords[i] = passedWords;
+                        scoreTries[i] = tries;
+                    }
             }
-        }
+            }
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
