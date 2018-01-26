@@ -12,12 +12,12 @@ public class Win extends AppCompatActivity {
     public static final String PLAYER_NAME = "playerName";
     public static final String ZEIGE_ES_DEINEN_FREUNDEN = "Zeige es deinen Freunden";
     public static final String DAS_WORT_WAR = "Das Wort war: ";
-    public static final String FEHLVERSUCHEN = " Fehlversuchen. \n";
+    public static final String FEHLVERSUCHEN = " Fehlversuch(en). \n";
     public static final String GESCHAFFT_NACH = "Geschafft nach ";
     public static final String HAT_ÜBERLEBT = " hat überlebt! \n";
     public static final String HANGMAN = "Hangman";
     public static final String TEXT_PLAIN = "text/plain";
-    public static final String FEHLVERSUCHEN_GEWONNEN = " Fehlversuchen gewonnen!";
+    public static final String FEHLVERSUCHEN_GEWONNEN = " Fehlversuch(en) gewonnen!";
     public static final String DU_HAST_MIT = ", du hast mit ";
     public static final String HERZLICHEN_GLÜCKWUNSCH = "Herzlichen Glückwunsch ";
     public static final String TRIES = "tries";
