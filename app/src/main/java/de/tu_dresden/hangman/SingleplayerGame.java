@@ -45,6 +45,7 @@ public class SingleplayerGame extends AppCompatActivity {
     public static final String HUND = "HUND";
     public static final String KATZE = "KATZE";
     public static final String KATZENKLO = "Katzenklo";
+    public static final String PASSED_WORDS = "passedWords";
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
     String[] wordlist = {KATZENKLO, KATZE, HUND, MAUS, PAPAGEI, TIGER, KUCHEN, HAMBURGER, FREUND, ZUSTAND, FISCH, GEIER, FUCHS, GANS, ENTE, FISCH, QUALLE, GLAS, INSEL, BAYERN, SACHSEN, PULLOVER};
 
@@ -54,7 +55,7 @@ public class SingleplayerGame extends AppCompatActivity {
     String word = wordlist[randomNum].toUpperCase();
     String playerName;
 
-    int wordLength;
+    int wordLength, passedWords = 0;
     Button buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL, buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ;
     TextView letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8, letter9;
     TextView space1, space2, space3, space4, space5, space6, space7, space8;
@@ -250,10 +251,12 @@ public class SingleplayerGame extends AppCompatActivity {
                     counterr++;
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
+                    passedWords ++;
                     letterArray[i].setText(currentL.toString());
                     win.putExtra(WORD, word); //Werte übergeben
                     win.putExtra(PLAYER_NAME, playerName);
                     win.putExtra(TRIES, counter);
+                    win.putExtra(PASSED_WORDS, passedWords);
                     startActivity(win);
                     finish(); //Activity schliessen
                 }

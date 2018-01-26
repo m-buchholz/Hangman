@@ -22,6 +22,7 @@ public class Win extends AppCompatActivity {
     public static final String HERZLICHEN_GLÜCKWUNSCH = "Herzlichen Glückwunsch ";
     public static final String TRIES = "tries";
     public static final String WORD = "word";
+    public static final String PASSED_WORDS = "passedWords";
 
     String[] scoreentry;
     String playerName, word, triesString;
@@ -39,6 +40,7 @@ public class Win extends AppCompatActivity {
         playerName = getIntent().getExtras().getString(PLAYER_NAME); //Spielernamen importieren
         tries = getIntent().getExtras().getInt(TRIES);
         triesString = Integer.toString(tries);
+        passedWords = getIntent().getExtras().getInt(PASSED_WORDS);
 
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
@@ -71,14 +73,25 @@ public class Win extends AppCompatActivity {
                 0, //Platz 10
         };
 
-        for (int i=0; i<10; i++) { // Schleife um Score auf entsprechenden Platz zu setzen.
+        for (int i=0; i<=9; i++) { // Schleife um Score auf entsprechenden Platz zu setzen.
             if (scoreWords[i]<passedWords) {
                 scoreWords[i] = passedWords;
                 scoreTries[i] = tries;
+
+                for (int r=9; r>0; r--){ //Elemente rücken
+                    scoreWords[r]=scoreWords[r-1];
+                    scoreTries[r]=scoreTries[r-1];
+                }
+
             } else if (scoreWords[i]==passedWords){
                     if (scoreTries[i]>tries) {
                         scoreWords[i] = passedWords;
                         scoreTries[i] = tries;
+
+                        for (int r=9; r>0; r--){ //Elemente rücken
+                            scoreWords[r]=scoreWords[r-1];
+                            scoreTries[r]=scoreTries[r-1];
+                        }
                     }
             }
             }
