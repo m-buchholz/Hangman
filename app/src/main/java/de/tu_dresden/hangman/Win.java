@@ -24,7 +24,6 @@ public class Win extends AppCompatActivity {
     public static final String WORD = "word";
     public static final String PASSED_WORDS = "passedWords";
 
-    String[] scoreentry;
     String playerName, word, triesString;
     int tries, passedWords;
 
@@ -46,6 +45,21 @@ public class Win extends AppCompatActivity {
         shareButton = findViewById(R.id.share);
 
         notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN);
+
+        //////////////////SCORE//////////////////
+
+        String[] scorePlayer = {
+                "", //Platz 1
+                "", //Platz 2
+                "", //Platz 3
+                "", //Platz 4
+                "", //Platz 5
+                "", //Platz 6
+                "", //Platz 7
+                "", //Platz 8
+                "", //Platz 9
+                "", //Platz 10
+        };
 
         int[] scoreWords = { //Array fuer geschaffte Woerter
                 0, //Platz 1
@@ -73,28 +87,35 @@ public class Win extends AppCompatActivity {
                 0, //Platz 10
         };
 
-        for (int i=0; i<=9; i++) { // Schleife um Score auf entsprechenden Platz zu setzen.
+        for (int i=0; i<=9; i++) { // Schleife um Score auf entsprechenden Platz zu setzen, bzw. Elemente auch nachzuruecken
             if (scoreWords[i]<passedWords) {
-                scoreWords[i] = passedWords;
-                scoreTries[i] = tries;
-
-                for (int r=9; r>0; r--){ //Elemente rücken
+                for (int r=9; r>0; r--){ //Elemente ruecken
+                    scorePlayer[r]=scorePlayer[r-1];
                     scoreWords[r]=scoreWords[r-1];
                     scoreTries[r]=scoreTries[r-1];
                 }
 
+                scorePlayer[i] = playerName;
+                scoreWords[i] = passedWords;
+                scoreTries[i] = tries;
+
             } else if (scoreWords[i]==passedWords){
                     if (scoreTries[i]>tries) {
-                        scoreWords[i] = passedWords;
-                        scoreTries[i] = tries;
 
-                        for (int r=9; r>0; r--){ //Elemente rücken
+                        for (int r=9; r>0; r--){ //Elemente ruecken
+                            scorePlayer[r]=scorePlayer[r-1];
                             scoreWords[r]=scoreWords[r-1];
                             scoreTries[r]=scoreTries[r-1];
                         }
+
+                        scorePlayer[i] = playerName;
+                        scoreWords[i] = passedWords;
+                        scoreTries[i] = tries;
                     }
             }
             }
+
+        //////////////////SCORE//////////////////
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
