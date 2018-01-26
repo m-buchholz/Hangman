@@ -22,7 +22,11 @@ public class Win extends AppCompatActivity {
     public static final String HERZLICHEN_GLÜCKWUNSCH = "Herzlichen Glückwunsch ";
     public static final String TRIES = "tries";
     public static final String WORD = "word";
-    String playerName, word, tries;
+
+    String[] scoreentry;
+    String playerName, word, triesString;
+    int tries, passedWords;
+
     TextView notice;
     Button shareButton;
 
@@ -33,12 +37,48 @@ public class Win extends AppCompatActivity {
 
         word = getIntent().getExtras().getString(WORD);
         playerName = getIntent().getExtras().getString(PLAYER_NAME); //Spielernamen importieren
-        tries = Integer.toString(getIntent().getExtras().getInt(TRIES));
+        tries = getIntent().getExtras().getInt(TRIES);
+        triesString = Integer.toString(tries);
 
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
 
         notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN);
+
+        int[] scoreWords = { //Array fuer geschaffte Woerter
+                0, //Platz 1
+                0, //Platz 2
+                0, //Platz 3
+                0, //Platz 4
+                0, //Platz 5
+                0, //Platz 6
+                0, //Platz 7
+                0, //Platz 8
+                0, //Platz 9
+                0, //Platz 10
+        };
+
+        int[] scoreTries ={ //Array fuer Fehlversuche
+                0, //Platz 1
+                0, //Platz 2
+                0, //Platz 3
+                0, //Platz 4
+                0, //Platz 5
+                0, //Platz 6
+                0, //Platz 7
+                0, //Platz 8
+                0, //Platz 9
+                0, //Platz 10
+        };
+
+        for (int i=0; i<10; i++) { // Schleife um Score auf entsprechenden Platz zu setzen.
+            if (scoreWords[i]>passedWords) {
+                if (scoreTries[i]>tries) {
+                    scoreWords[i] = passedWords;
+                    scoreTries[i] = tries;
+                }
+            }
+        }
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +86,7 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType(TEXT_PLAIN);
                 share.putExtra(Intent.EXTRA_SUBJECT, HANGMAN);
-                share.putExtra(Intent.EXTRA_TEXT,playerName + HAT_ÜBERLEBT + GESCHAFFT_NACH + tries + FEHLVERSUCHEN + DAS_WORT_WAR + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + HAT_ÜBERLEBT + GESCHAFFT_NACH + triesString + FEHLVERSUCHEN + DAS_WORT_WAR + word );
                 startActivity(Intent.createChooser(share, ZEIGE_ES_DEINEN_FREUNDEN));
             }
         });
