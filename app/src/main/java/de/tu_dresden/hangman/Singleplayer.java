@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Singleplayer extends AppCompatActivity {
@@ -34,6 +35,9 @@ public class Singleplayer extends AppCompatActivity {
 
     public void startSPGame(View view){
         if(name.getText().toString().isEmpty() == false){
+            Globals g = Globals.getInstance();
+            g.setScore(0);
+            g.setTime(120);
             playerName = name.getText().toString();
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra(PLAYER_NAME, playerName);

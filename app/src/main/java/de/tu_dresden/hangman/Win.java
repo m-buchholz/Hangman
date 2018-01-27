@@ -44,7 +44,10 @@ public class Win extends AppCompatActivity {
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
 
-        notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN);
+        Globals g = Globals.getInstance();
+        int test= g.getScore();
+
+        notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN + test);
 
         //////////////////SCORE//////////////////
 

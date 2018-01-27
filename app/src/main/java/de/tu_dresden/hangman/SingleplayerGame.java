@@ -50,10 +50,7 @@ public class SingleplayerGame extends AppCompatActivity {
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
     String[] wordlist = {KATZENKLO, KATZE, HUND, MAUS, PAPAGEI, TIGER, KUCHEN, HAMBURGER, FREUND, ZUSTAND, FISCH, GEIER, FUCHS, GANS, ENTE, FISCH, QUALLE, GLAS, INSEL, BAYERN, SACHSEN, PULLOVER};
 
-    //Random number
-    int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
-
-    String word = wordlist[randomNum].toUpperCase();
+    String word;
     String playerName;
 
     int wordLength, passedWords = 0;
@@ -62,6 +59,9 @@ public class SingleplayerGame extends AppCompatActivity {
     TextView space1, space2, space3, space4, space5, space6, space7, space8;
     TextView[] letterArray = new TextView[9];
     TextView timerTV;
+
+    TimerClass timer;
+    int time;
 
     //Bilder array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
@@ -73,6 +73,22 @@ public class SingleplayerGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
+
+        timerTV = findViewById(R.id.timerTV);
+        Globals g = Globals.getInstance();
+        //bei erster Runde (entspricht Score == 0) timer Starten
+        if(g.getScore() == 0 && g.getTime()==120) {
+            //starte 2 min Timer
+            timer = new TimerClass(this, 120000, 1000, timerTV, 120);
+            timer.start();
+        }
+        else {
+            //starte Timer mit verbleibender Zeit
+            Globals gg = Globals.getInstance();
+            time = gg.getTime();
+            timer = new TimerClass( this, time*1000, 1000, timerTV, time);
+            timer.start();
+        }
 
         playerName = getIntent().getExtras().getString(PLAYER_NAME);
         Button[] buttons = {buttonA, buttonB};
@@ -116,6 +132,7 @@ public class SingleplayerGame extends AppCompatActivity {
         letter8 = findViewById(R.id.textView8);
         letter9 = findViewById(R.id.textView9);
 
+
         letterArray[0] = letter1;
         letterArray[1] = letter2;
         letterArray[2] = letter3;
@@ -134,6 +151,12 @@ public class SingleplayerGame extends AppCompatActivity {
         space6 = findViewById(R.id.space6);
         space7 = findViewById(R.id.space7);
         space8 = findViewById(R.id.space8);
+
+
+        //Wort wird Zufällig gewählt und Stirche angepasst
+        int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
+
+        word = wordlist[randomNum].toUpperCase();
 
         //Zeige Striche je nach Wortlänge
         wordLength = word.length();
@@ -222,21 +245,6 @@ public class SingleplayerGame extends AppCompatActivity {
         imageArray[7] = hangman7;
         imageArray[8] = hangman8;
 
-        //Countdown Timer
-        timerTV = (TextView) findViewById(R.id.timerTV);
-        new CountDownTimer(120000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                timerTV.setText("" + millisUntilFinished/60000 + ":" + (millisUntilFinished/1000)%60);
-                //here you can have your logic to set text to edittext
-            }
-
-            public void onFinish() {
-                timerTV.setText("done!");
-            }
-
-        }.start();
-
     }
 
     public void clickButton(View view){
@@ -247,6 +255,7 @@ public class SingleplayerGame extends AppCompatActivity {
 
             Intent lost = new Intent(this, Lose.class);
             Intent win = new Intent(this, Win.class);
+            Globals g = Globals.getInstance();
 
             HashMap<Character,Integer> map = new HashMap<Character,Integer>();
             String s = word;
@@ -274,8 +283,15 @@ public class SingleplayerGame extends AppCompatActivity {
                     win.putExtra(PLAYER_NAME, playerName);
                     win.putExtra(TRIES, counter);
                     win.putExtra(PASSED_WORDS, passedWords);
-                    startActivity(win);
-                    finish(); //Activity schliessen
+                    g.ScorePlusOne(); //Score +1
+                    g.setTime(timer.getRemainingTime());
+
+                    Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
+                    finish();
+                    startActivity(spGame);
+
+                    //startActivity(win);
+
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
                     letterArray[i].setText(currentL.toString());
@@ -301,7 +317,13 @@ public class SingleplayerGame extends AppCompatActivity {
                 lost.putExtra(WORD, word); //Werte übergeben
                 lost.putExtra(PLAYER_NAME, playerName);
                 lost.putExtra(TRIES, counter);
-                startActivity(lost);
+
+                g.setTime(timer.getRemainingTime());
+                Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
+                finish();
+                startActivity(spGame);
+                //startActivity(lost);
+
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 imageArray[counter-2].setVisibility(View.INVISIBLE);
                 finish(); //Activity schliessen
