@@ -95,9 +95,7 @@ public class SingleplayerGame extends AppCompatActivity {
 
                 public void onFinish() {
                     Intent i = new Intent(getApplicationContext(), Win.class);
-                    i.putExtra(WORD, word); //Werte übergeben
                     i.putExtra(PLAYER_NAME, playerName);
-                    i.putExtra(TRIES, counter);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();
@@ -124,9 +122,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 public void onFinish() {
                     Intent i = new Intent(getApplicationContext(), Win.class);
                     startActivity(i);
-                    i.putExtra(WORD, word); //Werte übergeben
                     i.putExtra(PLAYER_NAME, playerName);
-                    i.putExtra(TRIES, counter);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();

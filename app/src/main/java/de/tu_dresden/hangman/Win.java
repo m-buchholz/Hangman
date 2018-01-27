@@ -24,7 +24,7 @@ public class Win extends AppCompatActivity {
     public static final String WORD = "word";
     public static final String PASSED_WORDS = "passedWords";
 
-    String playerName, word, triesString;
+    String playerName, triesString;
     int tries, passedWords;
 
     TextView notice;
@@ -35,10 +35,7 @@ public class Win extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
-        word = getIntent().getExtras().getString(WORD);
         playerName = getIntent().getExtras().getString(PLAYER_NAME); //Spielernamen importieren
-        tries = getIntent().getExtras().getInt(TRIES);
-        triesString = Integer.toString(tries);
         passedWords = getIntent().getExtras().getInt(PASSED_WORDS);
 
         notice = findViewById(R.id.win_notice);
@@ -132,7 +129,7 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType(TEXT_PLAIN);
                 share.putExtra(Intent.EXTRA_SUBJECT, HANGMAN);
-                share.putExtra(Intent.EXTRA_TEXT,playerName + HAT_ÜBERLEBT + GESCHAFFT_NACH + triesString + FEHLVERSUCHEN + DAS_WORT_WAR + word );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + HAT_ÜBERLEBT + GESCHAFFT_NACH + triesString + FEHLVERSUCHEN + DAS_WORT_WAR + "Score !!" );
                 startActivity(Intent.createChooser(share, ZEIGE_ES_DEINEN_FREUNDEN));
             }
         });
