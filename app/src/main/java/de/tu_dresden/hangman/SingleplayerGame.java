@@ -8,6 +8,7 @@
 package de.tu_dresden.hangman;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +61,7 @@ public class SingleplayerGame extends AppCompatActivity {
     TextView letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8, letter9;
     TextView space1, space2, space3, space4, space5, space6, space7, space8;
     TextView[] letterArray = new TextView[9];
+    TextView timerTV;
 
     //Bilder array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
@@ -219,6 +221,21 @@ public class SingleplayerGame extends AppCompatActivity {
         imageArray[6] = hangman6;
         imageArray[7] = hangman7;
         imageArray[8] = hangman8;
+
+        //Countdown Timer
+        timerTV = (TextView) findViewById(R.id.timerTV);
+        new CountDownTimer(120000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timerTV.setText("" + millisUntilFinished/60000 + ":" + (millisUntilFinished/1000)%60);
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                timerTV.setText("done!");
+            }
+
+        }.start();
 
     }
 
