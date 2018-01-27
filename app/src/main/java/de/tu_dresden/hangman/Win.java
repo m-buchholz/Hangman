@@ -17,8 +17,6 @@ public class Win extends AppCompatActivity {
     public static final String HAT_ÜBERLEBT = " hat überlebt! \n";
     public static final String HANGMAN = "Hangman";
     public static final String TEXT_PLAIN = "text/plain";
-    public static final String FEHLVERSUCHEN_GEWONNEN = " Fehlversuch(en) gewonnen!";
-    public static final String DU_HAST_MIT = ", du hast mit ";
     public static final String HERZLICHEN_GLÜCKWUNSCH = "Herzlichen Glückwunsch ";
     public static final String PASSED_WORDS = "passedWords";
 
@@ -44,7 +42,7 @@ public class Win extends AppCompatActivity {
         //hier ist die Anzahl der richtigen Worte drin bzw steckt in Globals und kann so aufgerufen werden (= Score)
         int richtigeWorte = g.getScore();
 
-        notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT + " 12345 " + FEHLVERSUCHEN_GEWONNEN + " Anzahl korrekte Wörter: " + richtigeWorte);
+        notice.setText(HERZLICHEN_GLÜCKWUNSCH + " du hast den Score " + richtigeWorte);
 
         //////////////////SCORE//////////////////
 
