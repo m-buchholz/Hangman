@@ -45,9 +45,11 @@ public class Win extends AppCompatActivity {
         shareButton = findViewById(R.id.share);
 
         Globals g = Globals.getInstance();
-        int test= g.getScore();
 
-        notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN + test);
+        //hier ist die Anzahl der richtigen Worte drin bzw steckt in Globals und kann so aufgerufen werden (= Score)
+        int richtigeWorte = g.getScore();
+
+        notice.setText(HERZLICHEN_GLÜCKWUNSCH +playerName+ DU_HAST_MIT +tries+ FEHLVERSUCHEN_GEWONNEN + " Anzahl korrekte Wörter: " + richtigeWorte);
 
         //////////////////SCORE//////////////////
 

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class SingleplayerGame extends AppCompatActivity {
 
@@ -60,8 +61,7 @@ public class SingleplayerGame extends AppCompatActivity {
     TextView[] letterArray = new TextView[9];
     TextView timerTV;
 
-    TimerClass timer;
-    int time;
+    int time, remainingTime;
 
     //Bilder array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
@@ -71,23 +71,68 @@ public class SingleplayerGame extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
 
         timerTV = findViewById(R.id.timerTV);
         Globals g = Globals.getInstance();
         //bei erster Runde (entspricht Score == 0) timer Starten
+
         if(g.getScore() == 0 && g.getTime()==120) {
             //starte 2 min Timer
-            timer = new TimerClass(this, 120000, 1000, timerTV, 120);
-            timer.start();
+            remainingTime = 120;
+            new CountDownTimer(120000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    long millis = millisUntilFinished;
+                    String hms = String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+                            TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                    timerTV.setText(hms);
+                    remainingTime--;
+                }
+
+                public void onFinish() {
+                    Intent i = new Intent(getApplicationContext(), Win.class);
+                    i.putExtra(WORD, word); //Werte übergeben
+                    i.putExtra(PLAYER_NAME, playerName);
+                    i.putExtra(TRIES, counter);
+                    i.putExtra(PASSED_WORDS, passedWords);
+                    startActivity(i);
+                    finish();
+                    //timerTV.setText("done!");
+                }
+            }.start();
+
         }
         else {
             //starte Timer mit verbleibender Zeit
             Globals gg = Globals.getInstance();
-            time = gg.getTime();
-            timer = new TimerClass( this, time*1000, 1000, timerTV, time);
-            timer.start();
+            remainingTime = gg.getTime();
+            new CountDownTimer(remainingTime*1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    long millis = millisUntilFinished;
+                    String hms = String.format("%02d:%02d",
+                            TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+                            TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                    timerTV.setText(hms);
+                    remainingTime--;
+                }
+
+                public void onFinish() {
+                    Intent i = new Intent(getApplicationContext(), Win.class);
+                    startActivity(i);
+                    i.putExtra(WORD, word); //Werte übergeben
+                    i.putExtra(PLAYER_NAME, playerName);
+                    i.putExtra(TRIES, counter);
+                    i.putExtra(PASSED_WORDS, passedWords);
+                    startActivity(i);
+                    finish();
+                }
+            }.start();
+
         }
 
         playerName = getIntent().getExtras().getString(PLAYER_NAME);
@@ -279,12 +324,9 @@ public class SingleplayerGame extends AppCompatActivity {
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
                     passedWords ++;
                     letterArray[i].setText(currentL.toString());
-                    win.putExtra(WORD, word); //Werte übergeben
-                    win.putExtra(PLAYER_NAME, playerName);
-                    win.putExtra(TRIES, counter);
-                    win.putExtra(PASSED_WORDS, passedWords);
+
                     g.ScorePlusOne(); //Score +1
-                    g.setTime(timer.getRemainingTime());
+                    g.setTime(remainingTime);
 
                     Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                     finish();
@@ -314,15 +356,11 @@ public class SingleplayerGame extends AppCompatActivity {
             countertest=0;
             //wenn Maxium an Fehlversuchen erreicht -> lost activity
             if(counter == max-1){
-                lost.putExtra(WORD, word); //Werte übergeben
-                lost.putExtra(PLAYER_NAME, playerName);
-                lost.putExtra(TRIES, counter);
-
-                g.setTime(timer.getRemainingTime());
+                g.setTime(remainingTime);
                 Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                 finish();
                 startActivity(spGame);
-                //startActivity(lost);
+
 
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 imageArray[counter-2].setVisibility(View.INVISIBLE);
