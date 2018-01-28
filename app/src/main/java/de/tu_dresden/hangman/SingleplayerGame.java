@@ -294,7 +294,6 @@ public class SingleplayerGame extends AppCompatActivity {
             String letterToCheck = b.getText().toString();
             Character currentL;
 
-            Intent lost = new Intent(this, Lose.class);
             Intent win = new Intent(this, Win.class);
             Globals g = Globals.getInstance();
 
