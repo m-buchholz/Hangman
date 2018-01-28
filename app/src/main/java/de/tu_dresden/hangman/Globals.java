@@ -31,7 +31,7 @@ public class Globals {
         public int[] getScoreFalseWords(){
             return scoreFalseWords;
         }
-        
+
         public void setScorePlayer(String[] array){
             this.scorePlayer = array;
         }
