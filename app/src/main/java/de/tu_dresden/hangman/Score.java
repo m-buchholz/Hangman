@@ -65,6 +65,13 @@ public class Score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
+        Globals g = Globals.getInstance();
+        int passedWords = g.getScore();
+        int falseWords = g.getFalseWords();
+        String playerName = g.getPlayerName();
+
+
+
         Scoreboard = findViewById(R.id.Scoreboard);
         Scoreboard.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scorearray));
     }
