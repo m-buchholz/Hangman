@@ -8,7 +8,6 @@
 package de.tu_dresden.hangman;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class SingleplayerGame extends AppCompatActivity {
-
-    MediaPlayer gallow, holz1, holz2;
 
     public static final String TRIES = "tries";
     public static final String PLAYER_NAME = "playerName";
@@ -70,11 +67,10 @@ public class SingleplayerGame extends AppCompatActivity {
     ImageView[] imageArray = new ImageView[9];
     ImageView hangman0, hangman1, hangman2, hangman3, hangman4, hangman5, hangman6, hangman7, hangman8;
 
-    int max = (imageArray.length+1), counter = 0, countertest = 0, counterright =0, counterr=0, scount = 0;
+    int max = (imageArray.length+1), counter = 0, countertest = 0, counterright =0, counterr=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
@@ -290,11 +286,6 @@ public class SingleplayerGame extends AppCompatActivity {
         imageArray[7] = hangman7;
         imageArray[8] = hangman8;
 
-        //Sound
-        gallow = MediaPlayer.create(this, R.raw.galgen);
-        holz1 = MediaPlayer.create(this, R.raw.holz1);
-        holz2 = MediaPlayer.create(this, R.raw.holz2);
-
     }
 
     public void clickButton(View view){
@@ -303,7 +294,6 @@ public class SingleplayerGame extends AppCompatActivity {
             String letterToCheck = b.getText().toString();
             Character currentL;
 
-            Intent lost = new Intent(this, Lose.class);
             Intent win = new Intent(this, Win.class);
             Globals g = Globals.getInstance();
 
@@ -361,7 +351,7 @@ public class SingleplayerGame extends AppCompatActivity {
             countertest=0;
             //wenn Maxium an Fehlversuchen erreicht -> lost activity
             if(counter == max-1){
-                gallow.start();
+                g.falseWordsPlusOne();
                 g.setTime(remainingTime);
                 Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                 finish();
@@ -374,17 +364,7 @@ public class SingleplayerGame extends AppCompatActivity {
             }
             else if (counter > 0 && counter < (max-1)){
                 imageArray[counter-1].setVisibility(View.VISIBLE);
-                if (counter == 1 && scount == 0){
-                    holz1.start();
-                    scount++;
-                }
-                if (counter > 1){
-                    imageArray[counter-2].setVisibility(View.INVISIBLE);
-                }
-                if (counter > scount){
-                    holz1.start();
-                    scount++;
-                }
+                if (counter > 1) imageArray[counter-2].setVisibility(View.INVISIBLE);
             }
     }
 

@@ -9,11 +9,29 @@ public class Globals {
         private static Globals instance;
 
         // Global variable
-        private int score;
+        private int score, falseWords;
         private int remainingTime;
+        private String PlayerName;
 
         // Restrict the constructor from being instantiated
         private Globals(){}
+
+        public void setPlayerName(String a){
+            this.PlayerName = a;
+        }
+        public String getPlayerName(){
+            return PlayerName;
+        }
+
+        public void setFalseWords(int d){
+            this.falseWords=d;
+        }
+        public int getFalseWords(){
+            return this.falseWords;
+        }
+        public void falseWordsPlusOne(){
+            this.falseWords++;
+        }
 
         public void setScore(int d){
             this.score=d;

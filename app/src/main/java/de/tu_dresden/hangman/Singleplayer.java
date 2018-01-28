@@ -40,6 +40,7 @@ public class Singleplayer extends AppCompatActivity {
         if(name.getText().toString().isEmpty() == false){
             Globals g = Globals.getInstance();
             g.setScore(0);
+            g.setFalseWords(0);
             g.setTime(120);
             playerName = name.getText().toString();
             Intent startSPGame = new Intent(this, SingleplayerGame.class);

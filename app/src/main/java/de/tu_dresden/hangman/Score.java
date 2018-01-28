@@ -5,6 +5,34 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/*
+* zuerst Objekt der Klasse Gobals erzeugen, keine Ahnung was genua bei getInstance() vorgeht, es funktioniert;):
+*
+* Globals g = Globals.getInstance();
+*
+* dann, um Score zu bekommen:
+*
+* int VarName = g.getScore(123);
+*
+* um ihn zu setzen
+*
+* g.setScore();
+*
+* Analog mit falschen Wörtern (hab ich auch schon mit bei SingleplayeeGame rein, sollte funktionieren):
+*
+* int VarName = g.getFalseWords();
+*
+* g.setFalseWords(123);
+*
+* Um Name zu setzen (muss noch in Singleplayer gemacht werden)
+*
+* g.setPlayerName("Hans");
+*
+* und um ihn zu bekommen
+*
+* String VaribaleName = g.getPlayerName();
+* */
+
 public class Score extends AppCompatActivity {
 
     public static final String PLATZ_10 = "Platz 10: ";
