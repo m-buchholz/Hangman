@@ -31,6 +31,16 @@ import android.widget.ListView;
 * und um ihn zu bekommen
 *
 * String VaribaleName = g.getPlayerName();
+*
+* ScoreArray global setzen:
+*
+* g.setScorePlayer(yourArray);
+*
+* und bekommen
+*
+* String[] arrayName = g.getScorePlayer();
+*
+* analog mit allen anderen: setScoreWords, getScoreWords, setScoreFalseWords, getScoreFalseWords
 * */
 
 public class Score extends AppCompatActivity {
@@ -64,6 +74,13 @@ public class Score extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        Globals g = Globals.getInstance();
+        int passedWords = g.getScore();
+        int falseWords = g.getFalseWords();
+        String playerName = g.getPlayerName();
+
+
 
         Scoreboard = findViewById(R.id.Scoreboard);
         Scoreboard.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scorearray));
