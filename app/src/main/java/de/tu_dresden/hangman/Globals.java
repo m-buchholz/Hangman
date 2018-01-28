@@ -12,9 +12,32 @@ public class Globals {
         private int score, falseWords;
         private int remainingTime;
         private String PlayerName;
+        private String[] scorePlayer;
+        private int[] scoreWords, scoreFalseWords;
 
         // Restrict the constructor from being instantiated
         private Globals(){}
+
+        public void setScoreWords(int[] array){
+            this.scoreWords = array;
+        }
+        public int[] getScoreWords(){
+            return scoreWords;
+        }
+
+        public void setScoreFalseWords(int[] array){
+            this.scoreFalseWords = array;
+        }
+        public int[] getScoreFalseWords(){
+            return scoreFalseWords;
+        }
+        
+        public void setScorePlayer(String[] array){
+            this.scorePlayer = array;
+        }
+        public String[] getScorePlayer(){
+            return scorePlayer;
+        }
 
         public void setPlayerName(String a){
             this.PlayerName = a;
