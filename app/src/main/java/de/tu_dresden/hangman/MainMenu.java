@@ -1,6 +1,7 @@
 package de.tu_dresden.hangman;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import java.io.*;
 
 public class MainMenu extends AppCompatActivity {
+
+    MediaPlayer soundTest;
 
     Button singleplayer;
     Button multiplayer;
