@@ -351,6 +351,7 @@ public class SingleplayerGame extends AppCompatActivity {
             countertest=0;
             //wenn Maxium an Fehlversuchen erreicht -> lost activity
             if(counter == max-1){
+                g.falseWordsPlusOne();
                 g.setTime(remainingTime);
                 Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                 finish();
