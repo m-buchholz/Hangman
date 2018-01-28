@@ -12,6 +12,14 @@ import android.widget.Toast;
 
 public class MultiplayerWord extends AppCompatActivity {
 
+    public static final String ENEMY_NAME = "enemyName";
+    public static final String PLAYER_NAME = "playerName";
+    public static final String ENEMY_WORD = "enemyWord";
+    public static final String GIB_EIN_WORT_MIT_WENIGER_ALS_9_BUCHSTABEN_EIN = "Gib ein Wort mit weniger als 9 Buchstaben ein!";
+    public static final String GIB_EIN_WORT_MIT_MEHR_ALS_4_BUCHSTABEN_EIN = "Gib ein Wort mit mehr als 4 Buchstaben ein!";
+    public static final String GIB_EIN_WORT_EIN = "Gib ein Wort ein!";
+    public static final String EIN = " ein!";
+    public static final String GIB_EIN_WORT_FÜR = ", gib ein Wort für ";
     Button startGame;
     EditText editMultiWord;
     TextView showActingPlayer;
@@ -22,32 +30,32 @@ public class MultiplayerWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer_word);
 
-        startGame = (Button)findViewById(R.id.buttonStartMPGame);
-        editMultiWord = (EditText)findViewById(R.id.editMultiWord);
-        showActingPlayer = (TextView)findViewById(R.id.showActingPlayer);
+        startGame = findViewById(R.id.buttonStartMPGame);
+        editMultiWord = findViewById(R.id.editMultiWord);
+        showActingPlayer = findViewById(R.id.showActingPlayer);
 
-        playerName = getIntent().getExtras().getString("playerName");
-        enemyName = getIntent().getExtras().getString("enemyName");
-        showActingPlayer.setText(playerName + ", gib ein Wort für " + enemyName + " ein!");
+        playerName = getIntent().getExtras().getString(PLAYER_NAME);
+        enemyName = getIntent().getExtras().getString(ENEMY_NAME);
+        showActingPlayer.setText(playerName + GIB_EIN_WORT_FÜR + enemyName + EIN);
     }
 
     public void startMPGame(View view){
         enemyWord = editMultiWord.getText().toString().toUpperCase();
 
         if(enemyWord.equalsIgnoreCase("") || enemyWord.equalsIgnoreCase("")) {
-            Toast.makeText(getApplicationContext(), "Gib ein Wort ein!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), GIB_EIN_WORT_EIN, Toast.LENGTH_LONG).show();
         }
         else if(enemyWord.length() < 5){
-            Toast.makeText(getApplicationContext(),"Gib ein Wort mit mehr als 4 Buchstaben ein!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), GIB_EIN_WORT_MIT_MEHR_ALS_4_BUCHSTABEN_EIN,Toast.LENGTH_LONG).show();
         }
         else if(enemyWord.length() > 9){
-            Toast.makeText(getApplicationContext(),"Gib ein Wort mit weniger als 9 Buchstaben ein!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), GIB_EIN_WORT_MIT_WENIGER_ALS_9_BUCHSTABEN_EIN,Toast.LENGTH_LONG).show();
         }
         else {
             Intent startMPWord2 = new Intent(this, MultiplayerWord2.class);
-            startMPWord2.putExtra("enemyWord", enemyWord);
-            startMPWord2.putExtra("playerName", playerName);
-            startMPWord2.putExtra("enemyName", enemyName);
+            startMPWord2.putExtra(ENEMY_WORD, enemyWord);
+            startMPWord2.putExtra(PLAYER_NAME, playerName);
+            startMPWord2.putExtra(ENEMY_NAME, enemyName);
             startActivity(startMPWord2);
             finish();
         }

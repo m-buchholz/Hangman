@@ -25,4 +25,13 @@
     <string name="wort_eingeben">Wort eingeben</string>
     <string name="weiter">Weiter</string>
     <string name="fail">FAIL</string>
+    <string name="bild_1">Bild 1</string>
+    <string name="bild_2">Bild 2</string>
+    <string name="bild_3">Bild 3</string>
+    <string name="bild_4">Bild 4</string>
+    <string name="bild_5">Bild 5</string>
+    <string name="bild_6">Bild 6</string>
+    <string name="bild_7">Bild 7</string>
+    <string name="bild_8">Bild 8</string>
+    <string name="bild_9">Bild 9</string>
 </resources>

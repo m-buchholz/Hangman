@@ -23,7 +23,7 @@
             android:id="@+id/share"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/RepeatButton"
+            android:layout_above="@+id/repeatB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:text="@string/teilen"
@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
-            android:id="@+id/endButton"
+            android:id="@+id/endB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -42,14 +42,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RepeatButton"
+            app:layout_constraintTop_toBottomOf="@+id/repeatB"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/RepeatButton"
+            android:id="@+id/repeatB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/endButton"
+            android:layout_above="@+id/endB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:onClick="openSingleplayer"
@@ -74,13 +74,14 @@
 
     <TextView
         android:id="@+id/win_notice"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/herzlichen_glueckwunsch"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
