@@ -2,6 +2,7 @@ package de.tu_dresden.hangman;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class Singleplayer extends AppCompatActivity {
     Button start;
     EditText name;
     String playerName;
+    MediaPlayer hintergr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class Singleplayer extends AppCompatActivity {
 
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
+        hintergr = MediaPlayer.create(this, R.raw.hintergr); //Hintergrund musik
 
         if (getIntent().hasExtra(PLAYER_NAME)) {
             playerName = getIntent().getExtras().getString(PLAYER_NAME);
@@ -42,6 +45,7 @@ public class Singleplayer extends AppCompatActivity {
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra(PLAYER_NAME, playerName);
             startActivity(startSPGame);
+            hintergr.start();
             finish();
         }
         else{
