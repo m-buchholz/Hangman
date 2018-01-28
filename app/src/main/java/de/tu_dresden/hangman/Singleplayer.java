@@ -28,12 +28,12 @@ public class Singleplayer extends AppCompatActivity {
 
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
-        hintergr = MediaPlayer.create(this, R.raw.hintergr); //Hintergrund musik
 
         if (getIntent().hasExtra(PLAYER_NAME)) {
             playerName = getIntent().getExtras().getString(PLAYER_NAME);
             name.setText(playerName);
         }
+        hintergr = MediaPlayer.create(this, R.raw.hintergr);
     }
 
     public void startSPGame(View view){
@@ -46,8 +46,8 @@ public class Singleplayer extends AppCompatActivity {
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra(PLAYER_NAME, playerName);
             startActivity(startSPGame);
-            hintergr.start();
             finish();
+            hintergr.start();
         }
         else{
             Toast.makeText(getApplicationContext(), GIB_DEINEN_GAMERTAG_EIN,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
