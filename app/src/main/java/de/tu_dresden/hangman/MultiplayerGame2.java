@@ -210,7 +210,6 @@ public class MultiplayerGame2 extends AppCompatActivity {
         String letterToCheck = b.getText().toString();
         Character currentL;
 
-        Intent lost = new Intent(this, Lose.class);
         Intent win = new Intent(this, Win.class);
 
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
