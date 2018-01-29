@@ -28,8 +28,9 @@ public class Singleplayer extends AppCompatActivity {
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
 
-        if (getIntent().hasExtra(PLAYER_NAME)) {
-            playerName = getIntent().getExtras().getString(PLAYER_NAME);
+        Globals g = Globals.getInstance();
+        if (g.getPlayerName() !=  null){
+            playerName = g.getPlayerName();
             name.setText(playerName);
         }
     }
@@ -39,8 +40,9 @@ public class Singleplayer extends AppCompatActivity {
             Globals g = Globals.getInstance();
             g.setScore(0);
             g.setFalseWords(0);
-            g.setTime(120);
+            g.setTime(10);
             playerName = name.getText().toString();
+            g.setPlayerName(playerName);
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra(PLAYER_NAME, playerName);
             startActivity(startSPGame);

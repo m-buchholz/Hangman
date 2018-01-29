@@ -10,15 +10,9 @@ import android.widget.TextView;
 public class Win extends AppCompatActivity {
 
     public static final String ZEIGE_ES_DEINEN_FREUNDEN = "Zeige es deinen Freunden";
-    public static final String DAS_WORT_WAR = "Das Wort war: ";
-    public static final String FEHLVERSUCHEN = " Fehlversuch(en). \n";
-    public static final String GESCHAFFT_NACH = "Geschafft nach ";
-    public static final String HAT_ÜBERLEBT = " hat überlebt! \n";
-    public static final String HERZLICHEN_GLÜCKWUNSCH = "Herzlichen Glückwunsch ";
-    public static final String PASSED_WORDS = "passedWords";
 
-    String playerName, triesString;
-    int tries, passedWords;
+    String playerName;
+    int passedWords, falseWords;
 
     TextView notice;
     Button shareButton;
@@ -28,22 +22,19 @@ public class Win extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
-        playerName = getIntent().getExtras().getString(playerName); //Spielernamen importieren
-        passedWords = getIntent().getExtras().getInt(PASSED_WORDS);
+        Globals g = Globals.getInstance();
+        playerName = g.getPlayerName(); //Spielernamen importieren
+        passedWords = g.getScore();  //hier ist die Anzahl der richtigen Worte drin bzw steckt in Globals und kann so aufgerufen werden (= Score)
+        falseWords = g.getFalseWords();
 
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
 
-        Globals g = Globals.getInstance();
+        notice.setText(playerName + ", du hast " + passedWords + " Wörter erraten. " + falseWords + " Wörter wurden falsch geraten.");
 
-        //hier ist die Anzahl der richtigen Worte drin bzw steckt in Globals und kann so aufgerufen werden (= Score)
-        int richtigeWorte = g.getScore();
-        String[] scorePlayer = g.getScorePlayer();
+        /*String[] scorePlayer = g.getScorePlayer();
         int[] scoreWords = g.getScoreWords();
         int[] scoreFalseWords = g.getScoreFalseWords();
-
-
-        notice.setText(HERZLICHEN_GLÜCKWUNSCH + " du hast " + richtigeWorte + " Wörter richtig erraten.");
 
         //////////////////SCORESCHLEIFE//////////////////
 
@@ -79,7 +70,7 @@ public class Win extends AppCompatActivity {
         g.setScoreWords(scoreWords);
         g.setScoreFalseWords(scoreFalseWords);
 
-        //////////////////SCORESCHLEIFE//////////////////
+        //////////////////SCORESCHLEIFE//////////////////*/
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +78,7 @@ public class Win extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.putExtra(Intent.EXTRA_SUBJECT, "Hangman");
-                share.putExtra(Intent.EXTRA_TEXT,playerName + HAT_ÜBERLEBT + GESCHAFFT_NACH + triesString + FEHLVERSUCHEN + DAS_WORT_WAR + "Score !!" );
+                share.putExtra(Intent.EXTRA_TEXT,playerName + " hat " + passedWords + " Wörter erraten. " + falseWords + " Wörter wurden falsch geraten.");
                 startActivity(Intent.createChooser(share, ZEIGE_ES_DEINEN_FREUNDEN));
             }
         });
@@ -95,7 +86,6 @@ public class Win extends AppCompatActivity {
 
     public void openSingleplayer(View view){
         Intent singleplayer = new Intent(this, Singleplayer.class);
-        singleplayer.putExtra(playerName, playerName);
         startActivity(singleplayer);
         finish();
     }

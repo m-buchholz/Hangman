@@ -26,7 +26,6 @@ public class SingleplayerGame extends AppCompatActivity {
 
     MediaPlayer holz1, gallow, hintergr;
     public static final String TRIES = "tries";
-    public static final String PLAYER_NAME = "playerName";
     public static final String WORD = "word";
     public static final String PULLOVER = "PULLOVER";
     public static final String SACHSEN = "SACHSEN";
@@ -54,7 +53,6 @@ public class SingleplayerGame extends AppCompatActivity {
     String[] wordlist = {KATZENKLO, KATZE, HUND, MAUS, PAPAGEI, TIGER, KUCHEN, HAMBURGER, FREUND, ZUSTAND, FISCH, GEIER, FUCHS, GANS, ENTE, FISCH, QUALLE, GLAS, INSEL, BAYERN, SACHSEN, PULLOVER};
 
     String word;
-    String playerName;
 
     int wordLength, passedWords = 0;
     Button buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL, buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ;
@@ -97,7 +95,6 @@ public class SingleplayerGame extends AppCompatActivity {
 
                 public void onFinish() {
                     Intent i = new Intent(getApplicationContext(), Win.class);
-                    i.putExtra(PLAYER_NAME, playerName);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();
@@ -124,7 +121,6 @@ public class SingleplayerGame extends AppCompatActivity {
                 public void onFinish() {
                     Intent i = new Intent(getApplicationContext(), Win.class);
                     startActivity(i);
-                    i.putExtra(PLAYER_NAME, playerName);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();
@@ -133,7 +129,6 @@ public class SingleplayerGame extends AppCompatActivity {
 
         }
 
-        playerName = getIntent().getExtras().getString(PLAYER_NAME);
         Button[] buttons = {buttonA, buttonB};
 
         //Buttons für Buchstaben
