@@ -544,12 +544,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:onClick="mute"
         app:layout_constraintBottom_toBottomOf="@+id/hangman8"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_lock_silent_mode"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="24dp" />
 
     <ImageView
         android:id="@+id/hangman0"
@@ -704,6 +704,7 @@
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        android:layout_marginRight="8dp" />
 
 </android.support.constraint.ConstraintLayout>
