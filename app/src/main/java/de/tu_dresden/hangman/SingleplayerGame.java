@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SingleplayerGame extends AppCompatActivity {
 
-    MediaPlayer holz1, gallow;
+    MediaPlayer holz1, gallow, hintergr;
     public static final String TRIES = "tries";
     public static final String PLAYER_NAME = "playerName";
     public static final String WORD = "word";
@@ -290,7 +290,16 @@ public class SingleplayerGame extends AppCompatActivity {
 
         gallow = MediaPlayer.create(this, R.raw.galgen);
         holz1 = MediaPlayer.create(this, R.raw.holz1);
+        hintergr = MediaPlayer.create(this, R.raw.hintergr);
 
+        if(scount == 0 && counterr == 0){
+            hintergr.start();
+        }
+
+
+    }
+    public void mute(View view){
+        hintergr.stop();
     }
 
     public void clickButton(View view){

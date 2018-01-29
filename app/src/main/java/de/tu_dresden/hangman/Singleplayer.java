@@ -19,7 +19,6 @@ public class Singleplayer extends AppCompatActivity {
     Button start;
     EditText name;
     String playerName;
-    MediaPlayer hintergr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class Singleplayer extends AppCompatActivity {
             playerName = getIntent().getExtras().getString(PLAYER_NAME);
             name.setText(playerName);
         }
-        hintergr = MediaPlayer.create(this, R.raw.hintergr);
     }
 
     public void startSPGame(View view){
@@ -47,7 +45,6 @@ public class Singleplayer extends AppCompatActivity {
             startSPGame.putExtra(PLAYER_NAME, playerName);
             startActivity(startSPGame);
             finish();
-            hintergr.start();
         }
         else{
             Toast.makeText(getApplicationContext(), GIB_DEINEN_GAMERTAG_EIN,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben
