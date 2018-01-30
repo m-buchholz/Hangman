@@ -333,6 +333,7 @@ public class SingleplayerGame extends AppCompatActivity {
 
                     g.ScorePlusOne(); //Score +1
                     g.setTime(remainingTime);
+                    //aktuellen Timer stoppen
                     timer.cancel();
 
                     Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
@@ -364,6 +365,7 @@ public class SingleplayerGame extends AppCompatActivity {
             if(counter == max-1){
                 g.falseWordsPlusOne();
                 g.setTime(remainingTime);
+                //aktuellen Timer stoppen
                 timer.cancel();
 
                 Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
