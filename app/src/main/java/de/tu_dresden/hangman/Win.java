@@ -30,33 +30,37 @@ public class Win extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
+        //Klasse der globalen Variablen integrieren
         Globals g = Globals.getInstance();
         playerName = g.getPlayerName(); //Spielernamen importieren
-        passedWords = g.getScore();  //hier ist die Anzahl der richtigen Worte drin bzw steckt in Globals und kann so aufgerufen werden (= Score)
-        falseWords = g.getFalseWords();
+        passedWords = g.getScore();  //Anzahl der erratenen Woerter
+        falseWords = g.getFalseWords(); //Anzahl der falsch geratenen Woerter
 
         notice = findViewById(R.id.win_notice);
         shareButton = findViewById(R.id.share);
 
         notice.setText(playerName + ", du hast " + passedWords + " Wörter erraten. " + falseWords + " Wörter wurden falsch geraten.");
 
+        //gespeicherte Werte-Verkettung auslesen
         SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
         scorePlayerString = sharedPreferences.getString("scorePlayer", "/:/:/:/:/:/:/:/:/:/");
         scoreWordsString = sharedPreferences.getString("scoreWords","0:0:0:0:0:0:0:0:0:0");
         scoreFalseWordsString = sharedPreferences.getString("scoreFalseWords","0:0:0:0:0:0:0:0:0:0");
 
+        //verkettete Werte in die unterschiedlichen Arrays zerlegen
         String[] scorePlayer = scorePlayerString.split(":");
-        //scorePlayer[0]; // this will contain "1":2:3:4:5
-        //scorePlayer[1]; // this will contain 1:"2":3:4:5
-        //scorePlayer[2]; // this will contain 1:2:"3":4:5
+        //scorePlayer[0]; // wird als Inhalt haben  "1" :2:3:4:5
+        //scorePlayer[1]; // wird als Inhalt haben 1: "2" :3:4:5
+        //scorePlayer[2]; // wird als Inhalt haben 1:2: "3" :4:5
         String[] scoreWords = scoreWordsString.split(":");
         String[] scoreFalseWords = scoreFalseWordsString.split(":");
 
         //////////////////SCORESCHLEIFE//////////////////
 
-        for (int i=0; i<=9; i++) { // Schleife um Score auf entsprechenden Platz zu setzen, bzw. Elemente auch nachzuruecken
+        //Funktion zur Einordnung der erzielten erratenen Woerter (und falschen Woerter) an die entsprechende Position des Scoreboards (Platz 1-10)
+        for (int i=0; i<=9; i++) {
             if (Integer.parseInt(scoreWords[i])<passedWords) {
-                for (int r=9; r>0; r--){ //Elemente ruecken
+                for (int r=9; r>0; r--){ //Elemente verrruecken
                     scorePlayer[r]=scorePlayer[r-1];
                     scoreWords[r]=scoreWords[r-1];
                     scoreFalseWords[r]=scoreFalseWords[r-1];
@@ -70,7 +74,7 @@ public class Win extends AppCompatActivity {
             } else if (Integer.parseInt(scoreWords[i])==passedWords){
                 if (Integer.parseInt(scoreFalseWords[i])>falseWords) {
 
-                    for (int r=9; r>0; r--){ //Elemente ruecken
+                    for (int r=9; r>0; r--){ //Elemente verruecken
                         scorePlayer[r]=scorePlayer[r-1];
                         scoreWords[r]=scoreWords[r-1];
                         scoreFalseWords[r]=scoreFalseWords[r-1];
@@ -84,20 +88,21 @@ public class Win extends AppCompatActivity {
             }
         }
 
-        //////////////////SCORESCHLEIFE//////////////////
+        //////////////////DATENSPEICHERUNG///////////////
 
-        ///SAVE DATA///
-
+        //Zusammensetzung (Vereinfachung) der Arrays zu 3 Zeichenketten (zur Abspeicherung der Daten)
         scorePlayerString = scorePlayer[0]+ ":" + scorePlayer[1] + ":" + scorePlayer[2] + ":" + scorePlayer[3] + ":" + scorePlayer[4] + ":" + scorePlayer[5] + ":" + scorePlayer[6] + ":" + scorePlayer[7] + ":" + scorePlayer[8] + ":" + scorePlayer[9];
         scoreWordsString = scoreWords[0]+ ":" + scoreWords[1] + ":" + scoreWords[2] + ":" + scoreWords[3] + ":" + scoreWords[4] + ":" + scoreWords[5] + ":" + scoreWords[6] + ":" + scoreWords[7] + ":" + scoreWords[8] + ":" + scoreWords[9];
         scoreFalseWordsString = scoreFalseWords[0]+ ":" + scoreFalseWords[1] + ":" + scoreFalseWords[2] + ":" + scoreFalseWords[3] + ":" + scoreFalseWords[4] + ":" + scoreFalseWords[5] + ":" + scoreFalseWords[6] + ":" + scoreFalseWords[7] + ":" + scoreFalseWords[8] + ":" + scoreFalseWords[9];
 
+        //Abspeichern der Zeichenketten (Score-Werte)
         sharedPreferences.edit().putString("scorePlayer", scorePlayerString).apply();
         sharedPreferences.edit().putString("scoreWords", scoreWordsString).apply();
         sharedPreferences.edit().putString("scoreFalseWords", scoreFalseWordsString).apply();
 
-        /////////////////////////////////////////////////////
+        //////////////////////////////////////////////////
 
+        //Teilen-Funktion
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +115,7 @@ public class Win extends AppCompatActivity {
         });
     }
 
-    public void openSingleplayer(View view){
+    public void openSingleplayer(View view){ //Singleplayer oeffnen
         Intent singleplayer = new Intent(this, Singleplayer.class);
         startActivity(singleplayer);
         finish();
@@ -118,5 +123,5 @@ public class Win extends AppCompatActivity {
 
     public void finish(View view){
         finish();
-    }
+    } //Spiel beenden
 }

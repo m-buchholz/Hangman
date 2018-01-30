@@ -9,42 +9,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /*
-* zuerst Objekt der Klasse Gobals erzeugen, keine Ahnung was genua bei getInstance() vorgeht, es funktioniert;):
-*
-* Globals g = Globals.getInstance();
-*
-* dann, um Score zu bekommen:
-*
-* int VarName = g.getScore(123);
-*
-* um ihn zu setzen
-*
-* g.setScore();
-*
-* Analog mit falschen Wörtern (hab ich auch schon mit bei SingleplayeeGame rein, sollte funktionieren):
-*
-* int VarName = g.getFalseWords();
-*
-* g.setFalseWords(123);
-*
-* Um Name zu setzen (muss noch in Singleplayer gemacht werden)
-*
-* g.setPlayerName("Hans");
-*
-* und um ihn zu bekommen
-*
-* String VaribaleName = g.getPlayerName();
-*
-* ScoreArray global setzen:
-*
-* g.setScorePlayer(yourArray);
-*
-* und bekommen
-*
-* String[] arrayName = g.getScorePlayer();
-*
-* analog mit allen anderen: setScoreWords, getScoreWords, setScoreFalseWords, getScoreFalseWords
-* */
+Zuerst Objekte der Klasse Globals erzeugen:
+Globals g = Globals.getInstance();
+
+Score lesen:
+int VarName = g.getScore(123);
+Score Setzen:
+g.setScore();
+
+Analog mit falschen Woertern:
+int VarName = g.getFalseWords();
+g.setFalseWords(123);
+
+Namen setzen:
+g.setPlayerName("Hans");
+Namen lesen:*
+String VaribaleName = g.getPlayerName();
+*/
+
 
 public class Score extends AppCompatActivity {
 
@@ -67,11 +49,15 @@ public class Score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
+        Scoreboard = findViewById(R.id.Scoreboard);
+
+        //gespeicherte Werte-Verkettung auslesen
         SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
         scorePlayerString = sharedPreferences.getString("scorePlayer", "/:/:/:/:/:/:/:/:/:/");
         scoreWordsString = sharedPreferences.getString("scoreWords","-:-:-:-:-:-:-:-:-:-");
         scoreFalseWordsString = sharedPreferences.getString("scoreFalseWords","-:-:-:-:-:-:-:-:-:-");
 
+        //verkettete Werte in die unterschiedlichen Arrays zerlegen
         String[] scorePlayer = scorePlayerString.split(":");
         //scorePlayer[0]; // this will contain "1":2:3:4:5
         //scorePlayer[1]; // this will contain 1:"2":3:4:5
@@ -79,6 +65,7 @@ public class Score extends AppCompatActivity {
         String[] scoreWords = scoreWordsString.split(":");
         String[] scoreFalseWords = scoreFalseWordsString.split(":");
 
+        //Werte geordnet nach Plaetzen in ein Score-Array zusammenfassen zur Ausgabe
         String[] scorearray = {
                 PLATZ_1 + scorePlayer[0] + " - " + scoreWords[0] + " Richtige und " + scoreFalseWords[0] + " Falsche",
                 PLATZ_2 + scorePlayer[1] + " - " + scoreWords[1] + " Richtige und " + scoreFalseWords[1] + " Falsche",
@@ -92,7 +79,7 @@ public class Score extends AppCompatActivity {
                 PLATZ_10 + scorePlayer[9] + " - " + scoreWords[9] + " Richtige und " + scoreFalseWords[9] + " Falsche",
         };
 
-        Scoreboard = findViewById(R.id.Scoreboard);
+        //Score-Array in der ListView ausgeben
         Scoreboard.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scorearray));
     }
 }

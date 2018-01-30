@@ -59,22 +59,22 @@ public class MainMenu extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void openSingleplayer(View view){
+    public void openSingleplayer(View view){ //Singleplayer oeffnen
         Intent singleplayer = new Intent(this, Singleplayer.class);
         startActivity(singleplayer);
     }
 
-    public void openMultiplayer(View view){
+    public void openMultiplayer(View view){ //Multiplayer oeffnen
         Intent multiplayer = new Intent(this, Multiplayer.class);
         startActivity(multiplayer);
     }
 
-    public void openScore(View view){
+    public void openScore(View view){ //Score oeffnen
         Intent score = new Intent(this, Score.class);
         startActivity(score);
     }
 
-    public void openCredits(View view){
+    public void openCredits(View view){ // Credits oeffnen
         Intent credits = new Intent(this, Credits.class);
         startActivity(credits);
     }

@@ -49,6 +49,7 @@ public class SingleplayerGame extends AppCompatActivity {
     public static final String KATZE = "KATZE";
     public static final String KATZENKLO = "Katzenklo";
     public static final String PASSED_WORDS = "passedWords";
+
     //Wortliste, aus der zufällig eins ausgewählt wird, max 9 zeichen
     String[] wordlist = {KATZENKLO, KATZE, HUND, MAUS, PAPAGEI, TIGER, KUCHEN, HAMBURGER, FREUND, ZUSTAND, FISCH, GEIER, FUCHS, GANS, ENTE, FISCH, QUALLE, GLAS, INSEL, BAYERN, SACHSEN, PULLOVER};
 
@@ -64,7 +65,7 @@ public class SingleplayerGame extends AppCompatActivity {
 
     int remainingTime;
 
-    //Bilder array, Länge 9 = 9 Versuche
+    //Bild-Array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
     ImageView hangman0, hangman1, hangman2, hangman3, hangman4, hangman5, hangman6, hangman7, hangman8;
 
@@ -83,7 +84,7 @@ public class SingleplayerGame extends AppCompatActivity {
 
         timerTV = findViewById(R.id.timerTV);
         Globals g = Globals.getInstance();
-        //bei erster Runde (entspricht Score == 0) timer Starten
+        //bei erster Runde (entspricht Score == 0) Timer starten
 
         if(g.getScore() == 0 && g.getTime()==120) {
             //starte Hintergrundmusik
@@ -306,6 +307,7 @@ public class SingleplayerGame extends AppCompatActivity {
             String letterToCheck = b.getText().toString();
             Character currentL;
 
+            //Klasse der globalen Variablen integrieren
             Globals g = Globals.getInstance();
 
             HashMap<Character,Integer> map = new HashMap<Character,Integer>();
