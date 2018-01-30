@@ -1,7 +1,10 @@
 package de.tu_dresden.hangman;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileOutputStream;
 
 public class Singleplayer extends AppCompatActivity {
 
@@ -28,11 +33,9 @@ public class Singleplayer extends AppCompatActivity {
         start = findViewById(R.id.buttonStartSP);
         name = findViewById(R.id.editPlayerNameSP);
 
-        Globals g = Globals.getInstance();
-        if (g.getPlayerName() !=  null){
-            playerName = g.getPlayerName();
-            name.setText(playerName);
-        }
+        SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
+        playerName = sharedPreferences.getString("player", "");
+        name.setText(playerName);
     }
 
     public void startSPGame(View view){
@@ -40,8 +43,12 @@ public class Singleplayer extends AppCompatActivity {
             Globals g = Globals.getInstance();
             g.setScore(0);
             g.setFalseWords(0);
-            g.setTime(10); // ZUM TESTEN
+            g.setTime(60); // ZUM TESTEN
             playerName = name.getText().toString();
+
+            SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
+            sharedPreferences.edit().putString("player", playerName).apply();
+
             g.setPlayerName(playerName);
             Intent startSPGame = new Intent(this, SingleplayerGame.class);
             startSPGame.putExtra(PLAYER_NAME, playerName);

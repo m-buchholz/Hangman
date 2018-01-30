@@ -1,6 +1,8 @@
 package de.tu_dresden.hangman;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ public class MainMenu extends AppCompatActivity {
     Button multiplayer;
     Button score;
     Button credits;
+
+    String playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
