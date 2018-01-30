@@ -14,7 +14,7 @@ public class Globals {
         private int score, falseWords;
         private int remainingTime;
         private String PlayerName;
-
+ 
         // Restrict the constructor from being instantiated
         private Globals(){}
 

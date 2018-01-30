@@ -19,7 +19,7 @@ public class Win extends AppCompatActivity {
     public static final String ZEIGE_ES_DEINEN_FREUNDEN = "Zeige es deinen Freunden";
 
     String playerName,scorePlayerString, scoreWordsString, scoreFalseWordsString;
- 
+
     int passedWords, falseWords;
 
     TextView notice;
