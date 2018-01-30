@@ -23,7 +23,7 @@ g.setFalseWords(123);
 
 Namen setzen:
 g.setPlayerName("Hans");
-Namen lesen:*
+Namen lesen:
 String VaribaleName = g.getPlayerName();
 */
 

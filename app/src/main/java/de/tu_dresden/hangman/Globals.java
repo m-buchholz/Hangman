@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
  * Created by wunderlichpaul on 27.01.18.
  */
 //Klasse für globale Variablen, wie z.B. Score beim Singleplayer
+//mit getter und setter Methoden kann man die Variablen setzen bzw. bekommen
 
 public class Globals {
         private static Globals instance;

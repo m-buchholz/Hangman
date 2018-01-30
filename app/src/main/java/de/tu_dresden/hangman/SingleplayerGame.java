@@ -86,6 +86,7 @@ public class SingleplayerGame extends AppCompatActivity {
         Globals g = Globals.getInstance();
         //bei erster Runde (entspricht Score == 0) Timer starten
 
+        //Beim starten vom Spiel Timer mit 120 Sekunden
         if(g.getScore() == 0 && g.getTime()==120) {
             //starte Hintergrundmusik
             hintergr.start();
@@ -95,6 +96,7 @@ public class SingleplayerGame extends AppCompatActivity {
             timer = new CountDownTimer(120000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
+                    //Anzeigen in TextView timerTV
                     long millis = millisUntilFinished;
                     String hms = String.format("%02d:%02d",
                             TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
@@ -106,6 +108,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 }
 
                 public void onFinish() {
+                    //Wenn der Timer abgelaufen ist, Endscreen -> Win.java
                     Intent i = new Intent(getApplicationContext(), Win.class);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
@@ -115,13 +118,16 @@ public class SingleplayerGame extends AppCompatActivity {
             }.start();
 
         }
+        //neuer Timer mit verbleibeneder Zeit bei der nächsten Runde, also nachdem ein Wort falsch oder richtig erraten wurde
         else {
             //starte Timer mit verbleibender Zeit
             Globals gg = Globals.getInstance();
+            //bekomme verbleibende Zeit von globaler Klasse und starte Timer mit dieser
             remainingTime = gg.getTime();
             timer = new CountDownTimer(remainingTime*1000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
+                    //Anzeigen in TextView timerTV
                     long millis = millisUntilFinished;
                     String hms = String.format("%02d:%02d",
                             TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
@@ -132,6 +138,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 }
 
                 public void onFinish() {
+                    //Wenn der Timer abgelaufen ist, Endscreen -> Win.java
                     Intent i = new Intent(getApplicationContext(), Win.class);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
@@ -140,8 +147,6 @@ public class SingleplayerGame extends AppCompatActivity {
             }.start();
 
         }
-
-        Button[] buttons = {buttonA, buttonB};
 
         //Buttons für Buchstaben
         buttonA = findViewById(R.id.buttonA);
@@ -182,7 +187,16 @@ public class SingleplayerGame extends AppCompatActivity {
         letter8 = findViewById(R.id.textView8);
         letter9 = findViewById(R.id.textView9);
 
+        space1 = findViewById(R.id.space1);
+        space2 = findViewById(R.id.space2);
+        space3 = findViewById(R.id.space3);
+        space4 = findViewById(R.id.space4);
+        space5 = findViewById(R.id.space5);
+        space6 = findViewById(R.id.space6);
+        space7 = findViewById(R.id.space7);
+        space8 = findViewById(R.id.space8);
 
+        //Leerzeichen für Buchstaben in Array packen
         letterArray[0] = letter1;
         letterArray[1] = letter2;
         letterArray[2] = letter3;
@@ -193,19 +207,11 @@ public class SingleplayerGame extends AppCompatActivity {
         letterArray[7] = letter8;
         letterArray[8] = letter9;
 
-        space1 = findViewById(R.id.space1);
-        space2 = findViewById(R.id.space2);
-        space3 = findViewById(R.id.space3);
-        space4 = findViewById(R.id.space4);
-        space5 = findViewById(R.id.space5);
-        space6 = findViewById(R.id.space6);
-        space7 = findViewById(R.id.space7);
-        space8 = findViewById(R.id.space8);
-
 
         //Wort wird Zufällig gewählt und Stirche angepasst
         int randomNum = (int) Math.round(Math.random()*(wordlist.length-1));
 
+        //Wort in Großbuchstaben konvertieren
         word = wordlist[randomNum].toUpperCase();
 
         //Zeige Striche je nach Wortlänge
@@ -301,15 +307,19 @@ public class SingleplayerGame extends AppCompatActivity {
         hintergr.stop();
     }
 
+    //Methode für Klick auf Buchstaben-Button
     public void clickButton(View view){
+            //geklickten Buchstaben-Button ausblenden
             view.setVisibility(View.INVISIBLE);
+            //Wert (A oder B oder C ...?) bekommen und in letterToCheck speichern
             Button b = (Button)view;
             String letterToCheck = b.getText().toString();
             Character currentL;
 
-            //Klasse der globalen Variablen integrieren
+            //Instanz der Klasse Globals für globalen Variablen erzeugen
             Globals g = Globals.getInstance();
 
+            //Anzahl der unterschiedlichen Buchstaben des aktuellen Wortes bekommen. Dazu Einstortieren in Hashmap, wie in Übung 6 zu Text und Kodierung
             HashMap<Character,Integer> map = new HashMap<Character,Integer>();
             String s = word;
             for(int i = 0; i < s.length(); i++){
@@ -323,12 +333,19 @@ public class SingleplayerGame extends AppCompatActivity {
             }
 
 
+            /////////////////Spiellogik//////////////////
+
+            //Schleife, die alle Buchstaben des Wortes durchgeht
             for(int i = 0; i < wordLength; i++) {
+                //der aktuelle Buchstabe currentL wird gecheckt
                 currentL = word.charAt(i);
+                //
                 if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright < (map.size()-1) && counter < max) {
                     letterArray[i].setText(currentL.toString());
                     counterr++;
                 }
+                //Je nachdem, ob letterToCheck mit currenL übereinstimmt oder nicht, werden unterschiedliche Counter hochgezählt
+                //wenn maximale Anzahl an Fehlveruschen erreicht ist, wird abgebrochen bzw wenn das Wort komplett ist, d.h. so viele richtig erraten, wieviel Buchstaben im Wort sind
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counterright == (map.size()-1) ) {
                     passedWords ++;
                     letterArray[i].setText(currentL.toString());
@@ -338,7 +355,7 @@ public class SingleplayerGame extends AppCompatActivity {
                     //aktuellen Timer stoppen
                     timer.cancel();
 
-                    Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
+                    Intent spGame = getIntent(); //gleicher Intent wie zuvor, diese Activity schliessen und anschließend neu starten
                     finish();
                     startActivity(spGame);
 
@@ -375,7 +392,7 @@ public class SingleplayerGame extends AppCompatActivity {
                 startActivity(spGame);
                 gallow.start();
 
-
+                //Bilder einblenden bzw. das zuvor ausblenden. Töne, wenn zuende, bzw. etwas falsch ist
                 imageArray[counter-1].setVisibility(View.VISIBLE);
                 imageArray[counter-2].setVisibility(View.INVISIBLE);
                 finish(); //Activity schliessen
