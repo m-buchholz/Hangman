@@ -102,22 +102,15 @@ public class SingleplayerGame extends AppCompatActivity {
                     timerTV.setText(hms);
                     remainingTime--;
 
-                    if(remainingTime == 1){
-                        Intent i = new Intent(getApplicationContext(), Win.class);
-                        i.putExtra(PASSED_WORDS, passedWords);
-                        startActivity(i);
-                        finish();
-                    }
 
                 }
 
                 public void onFinish() {
-                    /*Intent i = new Intent(getApplicationContext(), Win.class);
+                    Intent i = new Intent(getApplicationContext(), Win.class);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
-                    finish();*/
+                    finish();
 
-                    //timerTV.setText("done!");
                 }
             }.start();
 
@@ -136,20 +129,13 @@ public class SingleplayerGame extends AppCompatActivity {
                     timerTV.setText(hms);
                     remainingTime--;
 
-                    if(remainingTime == 1){
-                        Intent i = new Intent(getApplicationContext(), Win.class);
-                        i.putExtra(PASSED_WORDS, passedWords);
-                        startActivity(i);
-                        finish();
-                    }
-
                 }
 
                 public void onFinish() {
-                    /*Intent i = new Intent(getApplicationContext(), Win.class);
+                    Intent i = new Intent(getApplicationContext(), Win.class);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
-                    finish();*/
+                    finish();
                 }
             }.start();
 
