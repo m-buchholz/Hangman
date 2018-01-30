@@ -68,7 +68,7 @@ public class Score extends AppCompatActivity {
         setContentView(R.layout.activity_score);
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
-        scorePlayerString = sharedPreferences.getString("scorePlayer", "-:-:-:-:-:-:-:-:-:-");
+        scorePlayerString = sharedPreferences.getString("scorePlayer", "/:/:/:/:/:/:/:/:/:/");
         scoreWordsString = sharedPreferences.getString("scoreWords","-:-:-:-:-:-:-:-:-:-");
         scoreFalseWordsString = sharedPreferences.getString("scoreFalseWords","-:-:-:-:-:-:-:-:-:-");
 

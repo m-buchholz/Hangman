@@ -41,7 +41,7 @@ public class Win extends AppCompatActivity {
         notice.setText(playerName + ", du hast " + passedWords + " Wörter erraten. " + falseWords + " Wörter wurden falsch geraten.");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
-        scorePlayerString = sharedPreferences.getString("scorePlayer", "-:-:-:-:-:-:-:-:-:-");
+        scorePlayerString = sharedPreferences.getString("scorePlayer", "/:/:/:/:/:/:/:/:/:/");
         scoreWordsString = sharedPreferences.getString("scoreWords","0:0:0:0:0:0:0:0:0:0");
         scoreFalseWordsString = sharedPreferences.getString("scoreFalseWords","0:0:0:0:0:0:0:0:0:0");
 
