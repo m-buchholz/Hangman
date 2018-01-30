@@ -60,8 +60,9 @@ public class SingleplayerGame extends AppCompatActivity {
     TextView space1, space2, space3, space4, space5, space6, space7, space8;
     TextView[] letterArray = new TextView[9];
     TextView timerTV;
+    CountDownTimer timer;
 
-    int time, remainingTime;
+    int remainingTime;
 
     //Bilder array, Länge 9 = 9 Versuche
     ImageView[] imageArray = new ImageView[9];
@@ -75,14 +76,22 @@ public class SingleplayerGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
 
+        //Musik
+        gallow = MediaPlayer.create(this, R.raw.galgen);
+        holz1 = MediaPlayer.create(this, R.raw.holz1);
+        hintergr = MediaPlayer.create(this, R.raw.hintergr);
+
         timerTV = findViewById(R.id.timerTV);
         Globals g = Globals.getInstance();
         //bei erster Runde (entspricht Score == 0) timer Starten
 
         if(g.getScore() == 0 && g.getTime()==120) {
+            //starte Hintergrundmusik
+            hintergr.start();
+
             //starte 2 min Timer
             remainingTime = 120;
-            new CountDownTimer(120000, 1000) {
+            timer = new CountDownTimer(120000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     long millis = millisUntilFinished;
@@ -91,6 +100,7 @@ public class SingleplayerGame extends AppCompatActivity {
                             TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
                     timerTV.setText(hms);
                     remainingTime--;
+
                 }
 
                 public void onFinish() {
@@ -98,6 +108,7 @@ public class SingleplayerGame extends AppCompatActivity {
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();
+
                     //timerTV.setText("done!");
                 }
             }.start();
@@ -107,7 +118,7 @@ public class SingleplayerGame extends AppCompatActivity {
             //starte Timer mit verbleibender Zeit
             Globals gg = Globals.getInstance();
             remainingTime = gg.getTime();
-            new CountDownTimer(remainingTime*1000, 1000) {
+            timer = new CountDownTimer(remainingTime*1000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     long millis = millisUntilFinished;
@@ -116,11 +127,11 @@ public class SingleplayerGame extends AppCompatActivity {
                             TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
                     timerTV.setText(hms);
                     remainingTime--;
+
                 }
 
                 public void onFinish() {
                     Intent i = new Intent(getApplicationContext(), Win.class);
-                    startActivity(i);
                     i.putExtra(PASSED_WORDS, passedWords);
                     startActivity(i);
                     finish();
@@ -283,14 +294,6 @@ public class SingleplayerGame extends AppCompatActivity {
         imageArray[7] = hangman7;
         imageArray[8] = hangman8;
 
-        gallow = MediaPlayer.create(this, R.raw.galgen);
-        holz1 = MediaPlayer.create(this, R.raw.holz1);
-        hintergr = MediaPlayer.create(this, R.raw.hintergr);
-
-        if(scount == 0 && counterr == 0){
-            hintergr.start();
-        }
-
 
     }
     public void mute(View view){
@@ -303,7 +306,6 @@ public class SingleplayerGame extends AppCompatActivity {
             String letterToCheck = b.getText().toString();
             Character currentL;
 
-            Intent win = new Intent(this, Win.class);
             Globals g = Globals.getInstance();
 
             HashMap<Character,Integer> map = new HashMap<Character,Integer>();
@@ -331,12 +333,12 @@ public class SingleplayerGame extends AppCompatActivity {
 
                     g.ScorePlusOne(); //Score +1
                     g.setTime(remainingTime);
+                    timer.cancel();
 
                     Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                     finish();
                     startActivity(spGame);
 
-                    //startActivity(win);
 
                 }
                 else if (letterToCheck.equalsIgnoreCase(currentL.toString()) && counter == (max-1) && counterright < (map.size()-1) ){
@@ -362,6 +364,8 @@ public class SingleplayerGame extends AppCompatActivity {
             if(counter == max-1){
                 g.falseWordsPlusOne();
                 g.setTime(remainingTime);
+                timer.cancel();
+
                 Intent spGame = getIntent(); //gleicher Intent wie zuvor, Activity schliessen und anschließend neu starten
                 finish();
                 startActivity(spGame);
@@ -386,6 +390,8 @@ public class SingleplayerGame extends AppCompatActivity {
                     scount++;
                 }
             }
+
+
     }
 
 }

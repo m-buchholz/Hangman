@@ -43,7 +43,7 @@ public class Singleplayer extends AppCompatActivity {
             Globals g = Globals.getInstance();
             g.setScore(0);
             g.setFalseWords(0);
-            g.setTime(60); // ZUM TESTEN
+            g.setTime(120); // ZUM TESTEN
             playerName = name.getText().toString();
 
             SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);

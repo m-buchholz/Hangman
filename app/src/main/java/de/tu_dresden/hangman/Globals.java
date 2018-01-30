@@ -1,5 +1,7 @@
 package de.tu_dresden.hangman;
 
+import android.media.MediaPlayer;
+
 /**
  * Created by wunderlichpaul on 27.01.18.
  */
