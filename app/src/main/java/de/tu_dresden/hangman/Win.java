@@ -41,7 +41,7 @@ public class Win extends AppCompatActivity {
 
         notice.setText(playerName + ", du hast " + passedWords + " Wörter erraten. " + falseWords + " Wörter wurden falsch geraten.");
 
-        //gespeicherte Werte-Verkettung auslesen
+        //gespeicherte Werte-Verkettung auslesen, falls leer dann "/" bei Spielernamen und "0" bei erratenen Woerter, bzw. falsch geratenen Woertern eintragen
         SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
         scorePlayerString = sharedPreferences.getString("scorePlayer", "/:/:/:/:/:/:/:/:/:/");
         scoreWordsString = sharedPreferences.getString("scoreWords","0:0:0:0:0:0:0:0:0:0");
