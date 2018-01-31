@@ -16,18 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Singleplayer" />
-        <activity android:name=".Multiplayer" />
-        <activity android:name=".Credits" />
-        <activity android:name=".Score" />
-        <activity android:name=".SingleplayerGame" />
-        <activity android:name=".MultiplayerWord" />
-        <activity android:name=".MultiplayerGame" />
-        <activity android:name=".Win" />
-        <activity android:name=".Lose" />
-        <activity android:name=".MultiplayerWord2" />
-        <activity android:name=".MultiplayerGame2" />
-        <activity android:name=".EndMultiplayer"></activity>
+        <activity android:name=".Singleplayer" android:launchMode="singleInstance"/>
+        <activity android:name=".Multiplayer" android:launchMode="singleInstance"/>
+        <activity android:name=".Credits" android:launchMode="singleInstance"/>
+        <activity android:name=".Score" android:launchMode="singleInstance"/>
+        <activity android:name=".SingleplayerGame" android:launchMode="singleInstance" />
+        <activity android:name=".MultiplayerWord" android:launchMode="singleInstance"/>
+        <activity android:name=".MultiplayerGame" android:launchMode="singleInstance"/>
+        <activity android:name=".Win" android:launchMode="singleInstance" />
+        <activity android:name=".MultiplayerWord2" android:launchMode="singleInstance"/>
+        <activity android:name=".MultiplayerGame2" android:launchMode="singleInstance"/>
+        <activity android:name=".EndMultiplayer" android:launchMode="singleInstance"/>
     </application>
 
 </manifest>
