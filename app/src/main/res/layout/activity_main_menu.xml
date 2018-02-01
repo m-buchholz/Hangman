@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
             android:onClick="openSingleplayer"
             android:text="@string/singleplayer"
+            android:background="@drawable/button_borders"
             android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="320dp" />
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"
             android:onClick="openMultiplayer"
             android:text="@string/multiplayer"
+            android:background="@drawable/button_borders"
             android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="388dp" />
@@ -78,6 +80,7 @@
             android:layout_height="wrap_content"
             android:onClick="openScore"
             android:text="@string/Scoreboard"
+            android:background="@drawable/button_borders"
             android:textAlignment="center" />
 
         <Button
@@ -86,6 +89,7 @@
             android:layout_height="wrap_content"
             android:onClick="openCredits"
             android:text="@string/credits"
+            android:background="@drawable/button_borders"
             android:textAlignment="center"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="447dp" />

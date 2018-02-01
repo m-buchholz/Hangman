@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/buttonStartSP"
-            android:layout_width="match_parent"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:onClick="startSPGame"
             android:text="@string/start" />
