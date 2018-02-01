@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 public class Singleplayer extends AppCompatActivity {
 
     public static final String GIB_DEINEN_GAMERTAG_EIN = "Gib deinen Gamertag ein!";
+    public static final String ZEICHEN_FEHLER = "':' im Gamertag ist leider ungültig!";
     public static final String PLAYER_NAME = "playerName";
 
     Button start;
@@ -41,30 +42,32 @@ public class Singleplayer extends AppCompatActivity {
     }
 
     public void startSPGame(View view){
-        if(name.getText().toString().isEmpty() == false){ //Wenn EditText leer eine Fehlermeldung ausgeben
-            //globale Variablen zuruecksetzen
-            Globals g = Globals.getInstance();
-            g.setScore(0);
-            g.setFalseWords(0);
-            g.setTime(120); // ZUM TESTEN
-
+        if(name.getText().toString().isEmpty() == false) { //Wenn EditText leer eine Fehlermeldung ausgeben
             //Spielernamen aus dem TextEdit lesen
             playerName = name.getText().toString();
+            if (playerName.contains(":")) {
+                Toast.makeText(getApplicationContext(), ZEICHEN_FEHLER,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn : eingegeben wurde
+            } else {
+                //globale Variablen zuruecksetzen
+                Globals g = Globals.getInstance();
+                g.setScore(0);
+                g.setFalseWords(0);
+                g.setTime(120); // ZUM TESTEN
 
-            //Spielernamen persistent speichern
-            SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
-            sharedPreferences.edit().putString("player", playerName).apply();
+                //Spielernamen persistent speichern
+                SharedPreferences sharedPreferences = this.getSharedPreferences("de.tu_dresden.hangman", Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString("player", playerName).apply();
 
-            //Spielernamen als globale Variable uebernehmen
-            g.setPlayerName(playerName);
+                //Spielernamen als globale Variable uebernehmen
+                g.setPlayerName(playerName);
 
-            //Spiel starten und diese Activity beenden
-            Intent startSPGame = new Intent(this, SingleplayerGame.class);
-            startSPGame.putExtra(PLAYER_NAME, playerName);
-            startActivity(startSPGame);
-            finish();
-        }
-        else{
+                //Spiel starten und diese Activity beenden
+                Intent startSPGame = new Intent(this, SingleplayerGame.class);
+                startSPGame.putExtra(PLAYER_NAME, playerName);
+                startActivity(startSPGame);
+                finish();
+            }
+        } else{
             Toast.makeText(getApplicationContext(), GIB_DEINEN_GAMERTAG_EIN,Toast.LENGTH_LONG).show(); //Fehlermeldung wenn kein Name eingegeben wurde
         }
     }
